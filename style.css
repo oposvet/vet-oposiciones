@@ -24,3 +24,8 @@ input {
 button {
     margin-top: 10px;
 }
+
+.question-block {
+    padding: 10px;
+    border-radius: 4px;
+}
