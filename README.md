@@ -1,12 +1,13 @@
 # 🩺 Test Veterinaria Oposiciones
 
-Aplicación web sencilla para crear, importar, exportar y realizar tests de oposiciones de Veterinaria.
+Aplicación web para crear, importar, exportar y realizar tests de oposiciones de Veterinaria con corrección automática.
 
 ## Funcionalidades
-- Crear preguntas
-- Exportar packs JSON
-- Importar packs JSON
-- Realizar tests
+- Creación de preguntas
+- Importación y exportación en JSON
+- Realización de tests
+- Corrección automática objetiva
+- Puntuación sobre 10
 
 ## Tecnologías
 - HTML
@@ -15,3 +16,8 @@ Aplicación web sencilla para crear, importar, exportar y realizar tests de opos
 
 ## Uso
 Abrir `index.html` en navegador o desplegar con GitHub Pages.
+
+## Marco legal
+- RGPD (Reglamento UE 2016/679): no se tratan datos personales (art. 2.1)
+- TREBEP (RD Legislativo 5/2015): objetividad y mérito en evaluación (art. 55.2)
+- Propiedad intelectual: contenido original (RDL 1/1996, art. 10)
