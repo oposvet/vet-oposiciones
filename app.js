@@ -1,6 +1,5 @@
 // ===== SISTEMA DE ACCESO ADMIN =====
 const ADMIN_PASSWORD = "vetoposiciones2026"; // CAMBIA ESTO
-
 let isAdmin = false;
 
 function checkAdmin() {
@@ -22,10 +21,6 @@ function hideAdminFeatures() {
     document.getElementById("admin-section").style.display = "none";
 }
 
-// ===== AL CARGAR LA PÁGINA =====
-window.addEventListener("load", function() {
-    hideAdminFeatures(); // Oculta funciones admin al inicio
-});
 // ===== ESTADÍSTICAS EN VIVO =====
 let stats = {
     usersToday: 247,
@@ -37,51 +32,57 @@ let stats = {
 
 function displayStats() {
     const statsHTML = `
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                    color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+        <div id="stats-panel" style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;
+        ">
             <h2 style="margin-top: 0;">📊 Estadísticas en vivo</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                 <div>
-                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">👥 Usuarios hoy</p>
-                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.usersToday}</p>
+                    <p style="font-size: 12px;">👥 Usuarios hoy</p>
+                    <p style="font-size: 24px; font-weight: bold;" id="stat-users">${stats.usersToday}</p>
                 </div>
                 <div>
-                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">📊 Tests realizados</p>
-                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.testsCompleted}</p>
+                    <p style="font-size: 12px;">📊 Tests realizados</p>
+                    <p style="font-size: 24px; font-weight: bold;" id="stat-tests">${stats.testsCompleted}</p>
                 </div>
                 <div>
-                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">✅ Aciertos promedio</p>
-                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.avgScore}/10</p>
+                    <p style="font-size: 12px;">✅ Aciertos promedio</p>
+                    <p style="font-size: 24px; font-weight: bold;" id="stat-avg">${stats.avgScore}/10</p>
                 </div>
                 <div>
-                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">🔥 Racha máxima</p>
-                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.maxStreak} días</p>
+                    <p style="font-size: 12px;">🔥 Racha máxima</p>
+                    <p style="font-size: 24px; font-weight: bold;">${stats.maxStreak} días</p>
                 </div>
                 <div>
-                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">⭐ Satisfacción</p>
-                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.rating}/5</p>
+                    <p style="font-size: 12px;">⭐ Satisfacción</p>
+                    <p style="font-size: 24px; font-weight: bold;">${stats.rating}/5</p>
                 </div>
                 <div>
-                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">✨ Aprobados 2025</p>
-                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">94</p>
+                    <p style="font-size: 12px;">✨ Aprobados 2025</p>
+                    <p style="font-size: 24px; font-weight: bold;">94</p>
                 </div>
             </div>
         </div>
     `;
-    
-    // Inserta las estadísticas al cargar la página
-    const mainElement = document.querySelector('main');
+
+    const mainElement = document.querySelector("main");
     if (mainElement) {
-        mainElement.insertAdjacentHTML('afterbegin', statsHTML);
+        mainElement.insertAdjacentHTML("afterbegin", statsHTML);
     }
 }
 
-// ===== AL CARGAR LA PÁGINA =====
-window.addEventListener("load", function() {
-    displayStats();
-    hideAdminFeatures();
-});
+function updateStats(score) {
+    stats.usersToday += Math.floor(Math.random() * 2);
+    stats.testsCompleted += 1;
+    stats.avgScore = score;
 
+    document.getElementById("stat-users").textContent = stats.usersToday;
+    document.getElementById("stat-tests").textContent = stats.testsCompleted;
+    document.getElementById("stat-avg").textContent = `${stats.avgScore}/10`;
+}
+
+// ===== PREGUNTAS =====
 let questions = [
     {
         question: "¿Qué normativa regula los controles oficiales en materia de seguridad alimentaria?",
@@ -130,6 +131,7 @@ let questions = [
     }
 ];
 
+// ===== FUNCIONES ADMIN =====
 function addQuestion() {
     const q = document.getElementById("question").value;
     const a = document.getElementById("a").value;
@@ -169,6 +171,7 @@ function importJSON(event) {
     reader.readAsText(file);
 }
 
+// ===== TEST =====
 function startTest() {
     const div = document.getElementById("test");
     const result = document.getElementById("result");
@@ -181,18 +184,15 @@ function startTest() {
                 <p><strong>${index + 1}. ${q.question}</strong></p>
 
                 <label>
-                    <input type="radio" name="q${index}" value="A">
-                    A) ${q.options.A}
+                    <input type="radio" name="q${index}" value="A"> A) ${q.options.A}
                 </label><br>
 
                 <label>
-                    <input type="radio" name="q${index}" value="B">
-                    B) ${q.options.B}
+                    <input type="radio" name="q${index}" value="B"> B) ${q.options.B}
                 </label><br>
 
                 <label>
-                    <input type="radio" name="q${index}" value="C">
-                    C) ${q.options.C}
+                    <input type="radio" name="q${index}" value="C"> C) ${q.options.C}
                 </label><br>
             </div>
             <hr>
@@ -222,8 +222,7 @@ function correctTest() {
         }
     });
 
-    const total = questions.length;
-    const score = ((correct / total) * 10).toFixed(2);
+    const score = ((correct / questions.length) * 10).toFixed(1);
 
     document.getElementById("result").innerHTML = `
         <h3>Resultado del test</h3>
@@ -231,56 +230,12 @@ function correctTest() {
         <p>❌ Errores: ${incorrect}</p>
         <p>📊 Nota final: <strong>${score} / 10</strong></p>
     `;
-}
-// ===== ACTUALIZAR ESTADÍSTICAS =====
-function updateStats() {
-    // Simula incremento de usuarios
-    stats.usersToday += Math.floor(Math.random() * 3);
-    stats.testsCompleted += 1;
-    
-    // Recalcula promedio
-    let totalScore = 0;
-    for (let i = 0; i < questions.length; i++) {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        if (selected && selected.value === questions[i].correct) {
-            totalScore++;
-        }
-    }
-    stats.avgScore = ((totalScore / questions.length) * 10).toFixed(1);
+
+    updateStats(score);
 }
 
-// Llamar después de corregir un test
-function correctTest() {
-    let correct = 0;
-    let incorrect = 0;
-
-    questions.forEach((q, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        const block = document.getElementsByClassName("question-block")[index];
-
-        if (selected) {
-            if (selected.value === q.correct) {
-                correct++;
-                block.style.backgroundColor = "#d4edda";
-            } else {
-                incorrect++;
-                block.style.backgroundColor = "#f8d7da";
-            }
-        } else {
-            incorrect++;
-            block.style.backgroundColor = "#fff3cd";
-        }
-    });
-
-    const total = questions.length;
-    const score = ((correct / total) * 10).toFixed(2);
-
-    document.getElementById("result").innerHTML = `
-        <h3>Resultado del test</h3>
-        <p>✔️ Aciertos: ${correct}</p>
-        <p>❌ Errores: ${incorrect}</p>
-        <p>📊 Nota final: <strong>${score} / 10</strong></p>
-    `;
-    
-    updateStats(); // ← ACTUALIZA LAS ESTADÍSTICAS
-}
+// ===== AL CARGAR LA PÁGINA =====
+window.addEventListener("load", function () {
+    hideAdminFeatures();
+    displayStats();
+});
