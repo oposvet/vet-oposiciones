@@ -1,3 +1,31 @@
+// ===== SISTEMA DE ACCESO ADMIN =====
+const ADMIN_PASSWORD = "vetoposiciones2026"; // CAMBIA ESTO
+
+let isAdmin = false;
+
+function checkAdmin() {
+    const password = prompt("🔐 Ingresa contraseña admin:");
+    if (password === ADMIN_PASSWORD) {
+        isAdmin = true;
+        alert("✅ Acceso admin activado");
+        showAdminFeatures();
+    } else if (password !== null) {
+        alert("❌ Contraseña incorrecta");
+    }
+}
+
+function showAdminFeatures() {
+    document.getElementById("admin-section").style.display = "block";
+}
+
+function hideAdminFeatures() {
+    document.getElementById("admin-section").style.display = "none";
+}
+
+// ===== AL CARGAR LA PÁGINA =====
+window.addEventListener("load", function() {
+    hideAdminFeatures(); // Oculta funciones admin al inicio
+});
 let questions = [
     {
         question: "¿Qué normativa regula los controles oficiales en materia de seguridad alimentaria?",
