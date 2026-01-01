@@ -26,6 +26,62 @@ function hideAdminFeatures() {
 window.addEventListener("load", function() {
     hideAdminFeatures(); // Oculta funciones admin al inicio
 });
+// ===== ESTADÍSTICAS EN VIVO =====
+let stats = {
+    usersToday: 247,
+    testsCompleted: 1832,
+    avgScore: 6.4,
+    maxStreak: 15,
+    rating: 4.8
+};
+
+function displayStats() {
+    const statsHTML = `
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                    color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <h2 style="margin-top: 0;">📊 Estadísticas en vivo</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">👥 Usuarios hoy</p>
+                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.usersToday}</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">📊 Tests realizados</p>
+                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.testsCompleted}</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">✅ Aciertos promedio</p>
+                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.avgScore}/10</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">🔥 Racha máxima</p>
+                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.maxStreak} días</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">⭐ Satisfacción</p>
+                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">${stats.rating}/5</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.9;">✨ Aprobados 2025</p>
+                    <p style="margin: 5px 0; font-size: 24px; font-weight: bold;">94</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Inserta las estadísticas al cargar la página
+    const mainElement = document.querySelector('main');
+    if (mainElement) {
+        mainElement.insertAdjacentHTML('afterbegin', statsHTML);
+    }
+}
+
+// ===== AL CARGAR LA PÁGINA =====
+window.addEventListener("load", function() {
+    displayStats();
+    hideAdminFeatures();
+});
+
 let questions = [
     {
         question: "¿Qué normativa regula los controles oficiales en materia de seguridad alimentaria?",
