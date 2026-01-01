@@ -9,52 +9,60 @@
 
 <h1>🩺 Test Veterinaria Oposiciones</h1>
 
-<!-- BOTÓN DE ACCESO ADMIN (VISIBLE SIEMPRE) -->
-<section style="background: #fff3cd; border: 2px dashed #ff6b6b;">
-    <h2>🔐 Acceso Admin</h2>
-    <p style="font-size: 12px; color: #666;">Solo para el administrador de la plataforma</p>
-    <button onclick="checkAdmin()" style="background: #ff6b6b; color: white;">Desbloquear Admin</button>
-</section>
+<main>
 
-<!-- SECCIÓN ADMIN (OCULTA POR DEFECTO) -->
-<div id="admin-section" style="display: none;">
-    
-    <section style="background: #d4edda; border: 2px solid #28a745;">
-        <h2>➕ Crear Pregunta (ADMIN)</h2>
-        <input type="text" id="question" placeholder="Enunciado">
-        <input type="text" id="a" placeholder="Respuesta A">
-        <input type="text" id="b" placeholder="Respuesta B">
-        <input type="text" id="c" placeholder="Respuesta C">
-        <input type="text" id="correct" placeholder="Respuesta correcta (A/B/C)">
-        <button onclick="addQuestion()">Guardar pregunta</button>
+    <!-- BOTÓN DE ACCESO ADMIN -->
+    <section style="background: #fff3cd; border: 2px dashed #ff6b6b; padding: 15px;">
+        <h2>🔐 Acceso Admin</h2>
+        <p style="font-size: 12px; color: #666;">
+            Solo para el administrador de la plataforma
+        </p>
+        <button onclick="checkAdmin()" style="background: #ff6b6b; color: white;">
+            Desbloquear Admin
+        </button>
     </section>
 
-    <section style="background: #d4edda; border: 2px solid #28a745;">
-        <h2>💾 Exportar Pack JSON (ADMIN)</h2>
-        <button onclick="exportJSON()">Exportar</button>
+    <!-- SECCIÓN ADMIN (OCULTA POR DEFECTO) -->
+    <div id="admin-section" style="display: none; margin-top: 20px;">
+        
+        <section style="background: #d4edda; border: 2px solid #28a745; padding: 15px;">
+            <h2>➕ Crear Pregunta (ADMIN)</h2>
+            <input type="text" id="question" placeholder="Enunciado"><br>
+            <input type="text" id="a" placeholder="Respuesta A"><br>
+            <input type="text" id="b" placeholder="Respuesta B"><br>
+            <input type="text" id="c" placeholder="Respuesta C"><br>
+            <input type="text" id="correct" placeholder="Respuesta correcta (A/B/C)"><br><br>
+            <button onclick="addQuestion()">Guardar pregunta</button>
+        </section>
+
+        <section style="background: #d4edda; border: 2px solid #28a745; padding: 15px; margin-top: 10px;">
+            <h2>💾 Exportar Pack JSON (ADMIN)</h2>
+            <button onclick="exportJSON()">Exportar</button>
+        </section>
+
+        <section style="background: #d4edda; border: 2px solid #28a745; padding: 15px; margin-top: 10px;">
+            <h2>📥 Importar Pack JSON (ADMIN)</h2>
+            <input type="file" accept=".json" onchange="importJSON(event)">
+        </section>
+
+        <section style="background: #f8d7da; border: 2px solid #dc3545; padding: 15px; margin-top: 10px;">
+            <button onclick="hideAdminFeatures()" style="background: #dc3545; color: white;">
+                Cerrar sesión admin
+            </button>
+        </section>
+
+    </div>
+
+    <!-- SECCIÓN PÚBLICA -->
+    <section style="margin-top: 30px;">
+        <h2>📊 Mis Tests</h2>
+        <button onclick="startTest()">Iniciar test</button>
+        <div id="test"></div>
+        <button onclick="correctTest()">Corregir test</button>
+        <div id="result"></div>
     </section>
 
-    <section style="background: #d4edda; border: 2px solid #28a745;">
-        <h2>📥 Importar Pack JSON (ADMIN)</h2>
-        <input type="file" accept=".json" onchange="importJSON(event)">
-    </section>
-
-    <section style="background: #f8d7da; border: 2px solid #dc3545;">
-        <button onclick="hideAdminFeatures()" style="background: #dc3545; color: white;">Cerrar sesión admin</button>
-    </section>
-
-</div>
-
-<!-- RESTO DE SECCIONES (PÚBLICAS) -->
-
-
-<section>
-    <h2>📊 Mis Tests</h2>
-    <button onclick="startTest()">Iniciar test</button>
-    <div id="test"></div>
-    <button onclick="correctTest()">Corregir test</button>
-    <div id="result"></div>
-</section>
+</main>
 
 <script src="app.js"></script>
 </body>
