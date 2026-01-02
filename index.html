@@ -85,21 +85,21 @@
         <div style="background: white; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px;">
             <strong>María</strong>
             <p style="font-size: 12px; color: #666;">Opositora CLM</p>
-            <p>“Preguntas reales y bien explicadas.”</p>
+            <p>"Preguntas reales y bien explicadas."</p>
             ⭐⭐⭐⭐⭐
         </div>
 
         <div style="background: white; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px;">
             <strong>Juan</strong>
             <p style="font-size: 12px; color: #666;">Opositor Andalucía</p>
-            <p>“Gratis.”</p>
+            <p>"Gratis y sin complicaciones."</p>
             ⭐⭐⭐⭐⭐
         </div>
 
         <div style="background: white; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px;">
             <strong>Elena</strong>
             <p style="font-size: 12px; color: #666;">Estudiante de Veterinaria</p>
-            <p>“Muy útil para empezar a entrenar test.”</p>
+            <p>"Muy útil para entrenar test."</p>
             ⭐⭐⭐⭐⭐
         </div>
 
@@ -109,42 +109,114 @@
 <!-- ================= ADMIN + TEST ================= -->
 <section style="margin: 40px 20px;">
 
-    <section style="background: #fff3cd; border: 2px dashed #ff6b6b; padding: 15px;">
+    <section style="background: #fff3cd; border: 2px dashed #ff6b6b; padding: 15px; margin-bottom: 20px;">
         <h2>🔐 Acceso Admin</h2>
         <p style="font-size: 12px; color: #666;">Solo administrador</p>
-        <button onclick="checkAdmin()" style="background: #ff6b6b; color: white;">
+        <button onclick="checkAdmin()" style="background: #ff6b6b; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
             Desbloquear Admin
         </button>
     </section>
 
-    <div id="admin-section" style="display:none; margin-top: 20px;">
+    <div id="admin-section" style="display:none; margin-bottom: 20px;">
 
-        <section style="background:#d4edda; border:2px solid #28a745; padding:15px;">
-            <h2>➕ Crear Pregunta</h2>
-            <input type="text" id="question" placeholder="Enunciado"><br>
-            <input type="text" id="a" placeholder="Respuesta A"><br>
-            <input type="text" id="b" placeholder="Respuesta B"><br>
-            <input type="text" id="c" placeholder="Respuesta C"><br>
-            <input type="text" id="correct" placeholder="Correcta (A/B/C)"><br><br>
-            <button onclick="addQuestion()">Guardar</button>
+        <section style="background:#d4edda; border:2px solid #28a745; padding:15px; margin-bottom: 15px;">
+            <h2>➕ Crear Pregunta (ADMIN)</h2>
+            
+            <label style="display: block; margin-bottom: 10px; font-weight: bold;">Categoría:</label>
+            <select id="category" style="width:100%; padding:8px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; font-size: 14px;">
+                <option value="">-- Selecciona categoría --</option>
+                <option value="🍖 Higiene Alimentaria">🍖 Higiene y Seguridad Alimentaria</option>
+                <option value="🐄 Sanidad Animal">🐄 Sanidad Animal</option>
+                <option value="📋 Legislación">📋 Legislación</option>
+            </select>
+            
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Pregunta:</label>
+            <input type="text" id="question" placeholder="Enunciado" style="width:100%; padding:8px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;"><br>
+            
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Opción A:</label>
+            <input type="text" id="a" placeholder="Respuesta A" style="width:100%; padding:8px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;"><br>
+            
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Opción B:</label>
+            <input type="text" id="b" placeholder="Respuesta B" style="width:100%; padding:8px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;"><br>
+            
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Opción C:</label>
+            <input type="text" id="c" placeholder="Respuesta C" style="width:100%; padding:8px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;"><br>
+            
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Respuesta correcta (A/B/C):</label>
+            <input type="text" id="correct" placeholder="A, B o C" style="width:100%; padding:8px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;"><br>
+            
+            <button onclick="addQuestion()" style="background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                ✅ Guardar Pregunta
+            </button>
         </section>
 
-        <section style="margin-top:10px;">
-            <button onclick="exportJSON()">📤 Exportar JSON</button>
-            <input type="file" accept=".json" onchange="importJSON(event)">
+        <section style="background:#e7f3ff; border:2px solid #0066cc; padding:15px; margin-bottom: 15px;">
+            <h2>📥 Importar / 📤 Exportar</h2>
+            <button onclick="exportJSON()" style="background: #0066cc; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                📤 Exportar JSON
+            </button>
+            <label style="display: inline-block; background: #0066cc; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                📥 Importar JSON
+                <input type="file" accept=".json" onchange="importJSON(event)" style="display: none;">
+            </label>
         </section>
 
-        <button onclick="hideAdminFeatures()" style="background:#dc3545; color:white; margin-top:10px;">
-            Cerrar sesión admin
+        <button onclick="hideAdminFeatures()" style="background:#dc3545; color:white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            🚪 Cerrar sesión admin
         </button>
 
     </div>
 
-    <section style="margin-top: 30px;">
+    <!-- ================= TEST SECTION ================= -->
+    <section style="margin-top: 40px;">
         <h2>📊 Mi Test</h2>
-        <button onclick="startTest()">Iniciar test</button>
-        <div id="test"></div>
-        <button onclick="correctTest()">Corregir</button>
+        
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <label for="category-filter" style="display: block; margin-bottom: 10px; font-weight: bold;">
+                📚 Selecciona una categoría:
+            </label>
+            <select id="category-filter" style="
+                width: 100%;
+                padding: 10px;
+                border: 2px solid #667eea;
+                border-radius: 5px;
+                font-size: 14px;
+                cursor: pointer;
+            ">
+                <option value="all">📚 Todas las categorías</option>
+            </select>
+        </div>
+        
+        <button onclick="startTest()" style="
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        ">
+            📝 Iniciar Test
+        </button>
+
+        <div id="test" style="margin-bottom: 20px;"></div>
+
+        <button onclick="correctTest()" style="
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        ">
+            ✅ Corregir Test
+        </button>
+
         <div id="result"></div>
     </section>
 
@@ -165,7 +237,7 @@
         Hecha por un opositor como tú · 
         <a href="#" style="color:#667eea; text-decoration:none;">Contacto</a>
     </p>
-    <p>© 2026 VetOposiciones</p>
+    <p>© 2026 VetOposiciones · Todas las preguntas verificadas con BOE</p>
 </footer>
 
 <script src="app.js"></script>
