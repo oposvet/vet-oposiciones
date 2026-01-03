@@ -1,29 +1,3 @@
-// ===== SISTEMA DE ACCESO ADMIN =====
-// CONTRASEÑA VISIBLE EN GITHUB (segura)
-const ADMIN_PASSWORD = "admin123";
-// TU CONTRASEÑA REAL: supervet2026
-let isAdmin = false;
-
-function checkAdmin() {
-    const password = prompt("🔐 Ingresa contraseña admin:");
-    if (password === ADMIN_PASSWORD) {
-        isAdmin = true;
-        alert("✅ Acceso admin activado");
-        showAdminFeatures();
-    } else if (password !== null) {
-        alert("❌ Contraseña incorrecta");
-    }
-}
-
-function showAdminFeatures() {
-    document.getElementById("admin-section").style.display = "block";
-}
-
-function hideAdminFeatures() {
-    document.getElementById("admin-section").style.display = "none";
-    isAdmin = false;
-}
-
 // ===== ESTADÍSTICAS EN VIVO =====
 let stats = {
     usersToday: 247,
@@ -48,7 +22,6 @@ function displayStats() {
                 📊 Estadísticas en vivo
             </h2>
 
-            <!-- MENCIÓN DE TRANSPARENCIA RGPD -->
             <p style="
                 margin: 0 0 15px 0;
                 font-size: 12px;
@@ -127,12 +100,70 @@ function updateStats(score) {
     }
 }
 
-// ===== RESTO DEL CÓDIGO =====
-// (sin cambios respecto al original)
+// ===== FILTRO DE CATEGORÍAS =====
+function updateCategoryFilter() {
+    const categoryFilter = document.getElementById("category-filter");
+    if (!categoryFilter) return;
+
+    // Suponiendo categorías predefinidas
+    const categories = ["🍖 Higiene y Seguridad Alimentaria", "🐄 Sanidad Animal", "📋 Legislación"];
+    categories.forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat;
+        option.textContent = cat;
+        categoryFilter.appendChild(option);
+    });
+}
+
+// ===== TEST =====
+let currentTest = [];
+
+function startTest() {
+    const testDiv = document.getElementById("test");
+    const categoryFilter = document.getElementById("category-filter").value;
+
+    // Simulación: preguntas dummy
+    const allQuestions = [
+        { question: "Pregunta A", a: "1", b: "2", c: "3", d: "4", correct: "A", category: "🍖 Higiene y Seguridad Alimentaria" },
+        { question: "Pregunta B", a: "1", b: "2", c: "3", d: "4", correct: "B", category: "🐄 Sanidad Animal" },
+        { question: "Pregunta C", a: "1", b: "2", c: "3", d: "4", correct: "C", category: "📋 Legislación" }
+    ];
+
+    currentTest = allQuestions.filter(q => categoryFilter === "all" || q.category === categoryFilter);
+
+    let html = "";
+    currentTest.forEach((q, idx) => {
+        html += `<div style="margin-bottom:15px;">
+            <p><strong>${idx + 1}. ${q.question}</strong></p>
+            <label><input type="radio" name="q${idx}" value="A"> ${q.a}</label><br>
+            <label><input type="radio" name="q${idx}" value="B"> ${q.b}</label><br>
+            <label><input type="radio" name="q${idx}" value="C"> ${q.c}</label><br>
+            <label><input type="radio" name="q${idx}" value="D"> ${q.d}</label>
+        </div>`;
+    });
+
+    testDiv.innerHTML = html;
+    document.getElementById("result").textContent = "";
+}
+
+function correctTest() {
+    let score = 0;
+    currentTest.forEach((q, idx) => {
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (selected && selected.value === q.correct) {
+            score += 1;
+        }
+    });
+
+    const total = currentTest.length;
+    const finalScore = total ? (score / total * 10).toFixed(1) : 0;
+
+    document.getElementById("result").textContent = `Tu puntuación: ${finalScore}/10 (${score}/${total})`;
+    updateStats(parseFloat(finalScore));
+}
 
 // ===== AL CARGAR LA PÁGINA =====
 window.addEventListener("load", function () {
-    hideAdminFeatures();
     displayStats();
     updateCategoryFilter();
 });
