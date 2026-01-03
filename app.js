@@ -4,8 +4,8 @@
 
 const novedades = [
     {
-        fecha: "05/01/2026",
-        titulo: "Nuevas preguntas de sanidad animal",
+        fecha: "03/01/2026",
+        titulo: "Nuevas preguntas de bienestar animal",
         descripcion: "Actualización conforme a normativa básica estatal y reglamentos europeos vigentes."
     }
 ];
