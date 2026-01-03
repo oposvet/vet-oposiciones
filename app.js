@@ -8,16 +8,7 @@ const novedades = [
         titulo: "Nuevas preguntas de sanidad animal",
         descripcion: "Actualización conforme a normativa básica estatal y reglamentos europeos vigentes."
     },
-    {
-        fecha: "20/12/2025",
-        titulo: "Ampliación de categorías autonómicas",
-        descripcion: "Incorporadas preguntas específicas para Castilla-La Mancha y Andalucía."
-    },
-    {
-        fecha: "01/12/2025",
-        titulo: "Publicación inicial de la aplicación",
-        descripcion: "Lanzamiento de la plataforma gratuita de test de veterinaria."
-    }
+    
 ];
 
 function renderNovedades() {
