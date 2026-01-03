@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="App gratis para practicar oposiciones veterinaria CLM, Andalucía y más. Preguntas BOE verificadas, corrección automática. Prepárate ahora.">
-    <meta name="keywords" content="oposiciones veterinaria, test CLM, Sanitarios Locales, examen veterinaria">
+    <meta name="description" content="App gratis para practicar oposiciones de veterinaria. Test por categorías, corrección automática y preguntas basadas en normativa vigente.">
+    <meta name="keywords" content="oposiciones veterinaria, test veterinaria, bienestar animal, sanidad animal, CLM">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Veterinaria Oposiciones</title>
+    <title>VetOposiciones · Test Veterinaria</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,13 +21,13 @@
 ">
     <h1 style="margin: 0; font-size: 20px;">🩺 VetOposiciones</h1>
     <p style="margin: 5px 0 0 0; font-size: 12px; color: #666;">
-        Prepárate para oposiciones de veterinaria
+        Preparación de oposiciones de veterinaria
     </p>
 </header>
 
 <main>
 
-<!-- ================= LANDING PAGE ================= -->
+<!-- ================= LANDING ================= -->
 <section id="landing" style="
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -40,34 +40,41 @@
         🩺 Test Veterinaria Oposiciones
     </h1>
     <p style="font-size: 18px; margin-bottom: 20px; opacity: 0.9;">
-        Escala Superior Sanitarios (CLM, Andalucía, Madrid…)
+        Escala Superior · Sanitarios Locales · Comunidades Autónomas
     </p>
 
-    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 500px;">
-        <h3>✨ ¿Por qué esta app?</h3>
+    <div style="
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px auto;
+        max-width: 500px;
+    ">
+        <h3>¿Qué ofrece esta plataforma?</h3>
         <ul style="text-align: left;">
-            <li>✅ Corrección automática (nota sobre 10)</li>
-            <li>✅ 100% gratuita y sin registro</li>
-            <li>✅ Compatible con móvil y PC</li>
-            <li>✅ Diseñada por un opositor</li>
+            <li>✅ Test por categorías</li>
+            <li>✅ Corrección automática con nota sobre 10</li>
+            <li>✅ Preguntas basadas en normativa vigente</li>
+            <li>✅ Acceso libre, sin registro</li>
         </ul>
     </div>
 
-    <button onclick="scrollToTest()" style="
-        background: white;
-        color: #667eea;
-        padding: 15px 40px;
-        font-size: 16px;
-        font-weight: bold;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-    ">
-        👉 Empezar a practicar ahora
+    <button onclick="document.querySelector('#test-section').scrollIntoView({behavior:'smooth'})"
+        style="
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        ">
+        👉 Empezar a practicar
     </button>
 
     <p style="font-size: 12px; margin-top: 20px; opacity: 0.8;">
-        Sin publicidad · Sin registros · Solo estudio
+        Sin publicidad · Sin registros · Estudio directo
     </p>
 </section>
 
@@ -80,28 +87,28 @@
 ">
     <h2 style="text-align: center; margin-bottom: 30px;">🆕 Novedades</h2>
 
-    <div style="max-width: 900px; margin: auto; display: grid; gap: 20px;">
-
-        <div style="background: white; padding: 20px; border-left: 5px solid #667eea; border-radius: 8px;">
-            <strong>📅 05/01/2026</strong>
-            <p style="margin: 5px 0; font-weight: bold;">
-                Nuevas preguntas de bienestar animal 
-            </p>
-            <p style="font-size: 14px; color: #555;">
-                Incorporadas preguntas conforme a normativa básica estatal y reglamentos
-                europeos vigentes en materia de sanidad animal.
-            </p>
-        </div>
+    <!-- CONTENIDO DINÁMICO DESDE app.js -->
+    <div style="
+        max-width: 900px;
+        margin: auto;
+        display: grid;
+        gap: 20px;
+    ">
     </div>
 </section>
 
-<!-- ================= TEST SECTION ================= -->
-<section style="margin: 40px 20px;">
-    <h2>📊 Test</h2>
+<!-- ================= TEST ================= -->
+<section id="test-section" style="margin: 40px 20px;">
+    <h2>📝 Test</h2>
 
-    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-        <label for="category-filter" style="display: block; margin-bottom: 10px; font-weight: bold;">
-            📚 Selecciona una categoría:
+    <div style="
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    ">
+        <label for="category-filter" style="display:block; margin-bottom:10px; font-weight:bold;">
+            📚 Selecciona categoría
         </label>
         <select id="category-filter" style="
             width: 100%;
@@ -109,7 +116,6 @@
             border: 2px solid #667eea;
             border-radius: 5px;
             font-size: 14px;
-            cursor: pointer;
         ">
             <option value="all">📚 Todas las categorías</option>
         </select>
@@ -126,7 +132,7 @@
         font-weight: bold;
         margin-bottom: 20px;
     ">
-        📝 Iniciar Test
+        ▶ Iniciar test
     </button>
 
     <div id="test" style="margin-bottom: 20px;"></div>
@@ -142,10 +148,10 @@
         font-weight: bold;
         margin-bottom: 20px;
     ">
-        ✅ Corregir Test
+        ✔ Corregir test
     </button>
 
-    <div id="result"></div>
+    <div id="result" style="font-weight:bold;"></div>
 </section>
 
 </main>
@@ -160,10 +166,10 @@
     border-top: 1px solid #ddd;
 ">
     <p>
-        Hecha por un opositor como tú · 
+        Plataforma creada con fines formativos · 
         <a href="#" style="color:#667eea; text-decoration:none;">Contacto</a>
     </p>
-    <p>2026 VetOposiciones</p>
+    <p>2026 · VetOposiciones</p>
 </footer>
 
 <script src="app.js"></script>
