@@ -1,0 +1,92 @@
+[
+  {
+    "question": "¿Cuál es la temperatura mínima a la que debe mantenerse la carne de ave congelada según el Reglamento (CE) 852/2004?",
+    "a": "-12°C o inferior.",
+    "b": "-15°C o inferior.",
+    "c": "-18°C o inferior.",
+    "d": "-20°C o inferior.",
+    "correct": "C",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Cuál es el tiempo máximo de almacenamiento a refrigeración (entre 0°C y 4°C) para carne fresca sin tratamiento?",
+    "a": "2 días.",
+    "b": "3 días.",
+    "c": "5 días.",
+    "d": "7 días.",
+    "correct": "B",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "Según el Reglamento (CE) 2073/2005, ¿cuál es el límite máximo de Listeria monocytogenes en alimentos listos para el consumo?",
+    "a": "100 UFC/g.",
+    "b": "1.000 UFC/g.",
+    "c": "10.000 UFC/g.",
+    "d": "100.000 UFC/g.",
+    "correct": "A",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Cuál es el nivel de pH mínimo que debe tener un alimento para permitir el crecimiento de Clostridium botulinum?",
+    "a": "pH 4.6 o superior.",
+    "b": "pH 5.5 o superior.",
+    "c": "pH 6.0 o superior.",
+    "d": "pH 7.0 o superior.",
+    "correct": "A",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Qué microorganismo es el principal responsable de la salmonelosis en productos cárnicos?",
+    "a": "Salmonella typhi.",
+    "b": "Salmonella enteritidis.",
+    "c": "Salmonella choleraesuis.",
+    "d": "Salmonella paratyphi.",
+    "correct": "B",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "Según la normativa APPCC, ¿cuál es el número mínimo de Puntos Críticos de Control (PCC) en una planta de procesamiento de carne?",
+    "a": "Uno.",
+    "b": "Mínimo dos.",
+    "c": "Mínimo tres.",
+    "d": "Depende del tipo de carne.",
+    "correct": "D",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Cuál es la concentración máxima de sulfitos permitida en carne picada según la normativa UE?",
+    "a": "No está permitida.",
+    "b": "100 mg/kg.",
+    "c": "150 mg/kg.",
+    "d": "200 mg/kg.",
+    "correct": "A",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Qué patógeno es responsable de la mayoría de brotes de gastroenteritis asociados a productos cárnicos crudos o poco cocidos?",
+    "a": "Campylobacter jejuni.",
+    "b": "Escherichia coli O157:H7.",
+    "c": "Salmonella spp.",
+    "d": "Staphylococcus aureus.",
+    "correct": "A",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Cuál es el tiempo de congelación de productos cárnicos a -20°C para inactivar Trichinella spiralis?",
+    "a": "7 días.",
+    "b": "10 días.",
+    "c": "20 días.",
+    "d": "30 días.",
+    "correct": "C",
+    "category": "🍗 Higiene Alimentaria"
+  },
+  {
+    "question": "¿Cuál es la temperatura mínima interna de cocción para una hamburguesa de carne picada para eliminar E. coli O157:H7?",
+    "a": "60°C.",
+    "b": "65°C.",
+    "c": "71°C.",
+    "d": "75°C.",
+    "correct": "C",
+    "category": "🍗 Higiene Alimentaria"
+  }
+]
