@@ -52,7 +52,7 @@ const novedades = [
     fecha: "04/01/2026",
     titulo: "🆕 Estructura modular con 4 categorías",
     descripcion:
-      "La app ahora carga preguntas desde 4 archivos JSON separados. Más mantenible, escalable y fácil de actualizar.",
+      "La app ahora carga preguntas desde 4 categorias distintas. Más mantenible, escalable y fácil de actualizar.",
   },
   {
     fecha: "04/01/2026",
