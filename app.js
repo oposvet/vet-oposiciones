@@ -45,7 +45,7 @@ let currentTest = [];
 let userAnswers = [];
 
 // ==================================================
-// ===== NOVEDADES ===================================
+// ===== NOVEDADES ==================================
 // ==================================================
 const novedades = [
   {
@@ -83,17 +83,21 @@ const novedades = [
 function renderNovedades() {
   const container = document.getElementById("news-container");
   if (!container) return;
+
   container.innerHTML = "";
+
   novedades.forEach((nov) => {
-    const div = document.createElement("div");
-    div.style.cssText =
-      "background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;";
-    div.innerHTML = `
-      <h3 style="margin: 0 0 5px 0; color: #667eea;">${nov.titulo}</h3>
-      <p style="margin: 0; color: #666; font-size: 14px;">${nov.descripcion}</p>
-      <p style="margin: 10px 0 0 0; color: #999; font-size: 12px;">${nov.fecha}</p>
+    const item = document.createElement("div");
+    item.style.cssText =
+      "background:#fff; padding:15px; border-radius:8px; border-left:4px solid #667eea;";
+
+    item.innerHTML = `
+      <h3 style="margin:0 0 6px 0; color:#667eea;">${nov.titulo}</h3>
+      <p style="margin:0; color:#666; font-size:14px;">${nov.descripcion}</p>
+      <p style="margin:10px 0 0 0; color:#999; font-size:12px;">${nov.fecha}</p>
     `;
-    container.appendChild(div);
+
+    container.appendChild(item);
   });
 }
 
