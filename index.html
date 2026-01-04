@@ -1,66 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="App gratuita para practicar oposiciones de veterinaria. Test por categorías, corrección automática y preguntas basadas en normativa vigente.">
-    <meta name="keywords" content="oposiciones veterinaria, test veterinaria, bienestar animal, sanidad animal, CLM">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="App gratuita para practicar oposiciones de veterinaria. Test por categorías, corrección automática y preguntas basadas en normativa vigente."
+    />
+    <meta
+      name="keywords"
+      content="oposiciones veterinaria, test veterinaria, bienestar animal, sanidad animal, CLM"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VetOposiciones · Test Veterinaria</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- ================= HEADER ================= -->
-<header style="
-    background: white;
-    padding: 15px 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-">
-    <h1 style="margin: 0; font-size: 20px;">🩺 VetOposiciones</h1>
-    <p style="margin: 5px 0 0 0; font-size: 12px; color: #666;">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header
+      style="
+        background: white;
+        padding: 15px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      "
+    >
+      <h1 style="margin: 0; font-size: 20px">🩺 VetOposiciones</h1>
+      <p style="margin: 5px 0 0 0; font-size: 12px; color: #666">
         Preparación de oposiciones de veterinaria
-    </p>
-</header>
+      </p>
+    </header>
 
-<main>
+    <main>
+      <!-- ================= LANDING ================= -->
+      <section
+        id="landing"
+        style="
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 60px 20px;
+          text-align: center;
+          margin: 30px 20px;
+          border-radius: 10px;
+        "
+      >
+        <h1 style="font-size: 32px; margin-bottom: 10px">
+          🩺 Test Veterinaria Oposiciones
+        </h1>
+        <p style="font-size: 18px; margin-bottom: 20px; opacity: 0.9">
+          Escala Superior · Sanitarios Locales · Comunidades Autónomas
+        </p>
 
-<!-- ================= LANDING ================= -->
-<section id="landing" style="
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
-    margin: 30px 20px;
-    border-radius: 10px;
-">
-    <h1 style="font-size: 32px; margin-bottom: 10px;">
-        🩺 Test Veterinaria Oposiciones
-    </h1>
-    <p style="font-size: 18px; margin-bottom: 20px; opacity: 0.9;">
-        Escala Superior · Sanitarios Locales · Comunidades Autónomas
-    </p>
-
-    <div style="
-        background: rgba(255,255,255,0.1);
-        padding: 20px;
-        border-radius: 8px;
-        margin: 20px auto;
-        max-width: 500px;
-    ">
-        <h3>¿Qué ofrece esta plataforma?</h3>
-        <ul style="text-align: left;">
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 500px;
+          "
+        >
+          <h3>¿Qué ofrece esta plataforma?</h3>
+          <ul style="text-align: left">
             <li>✅ Test por categorías</li>
             <li>✅ Corrección automática con nota sobre 10</li>
             <li>✅ Preguntas basadas en normativa vigente</li>
             <li>✅ Acceso libre, sin registro</li>
-        </ul>
-    </div>
+          </ul>
+        </div>
 
-    <button onclick="document.querySelector('#test-section').scrollIntoView({behavior:'smooth'})"
-        style="
+        <button
+          onclick="document.querySelector('#test-section').scrollIntoView({behavior:'smooth'})"
+          style="
             background: white;
             color: #667eea;
             padding: 15px 40px;
@@ -69,117 +81,140 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
-        ">
-        👉 Empezar a practicar
-    </button>
+          "
+        >
+          👉 Empezar a practicar
+        </button>
 
-    <p style="font-size: 12px; margin-top: 20px; opacity: 0.8;">
-        Sin publicidad · Sin registros · Estudio directo
-    </p>
-</section>
+        <p style="font-size: 12px; margin-top: 20px; opacity: 0.8">
+          Sin publicidad · Sin registros · Estudio directo
+        </p>
+      </section>
 
-<!-- ================= NOVEDADES ================= -->
-<section style="
-    background: #f1f5ff;
-    padding: 40px 20px;
-    margin: 20px;
-    border-radius: 10px;
-">
-    <h2 style="text-align: center; margin-bottom: 30px;">🆕 Novedades</h2>
+      <!-- ================= NOVEDADES ================= -->
+      <section
+        style="
+          background: #f1f5ff;
+          padding: 40px 20px;
+          margin: 20px;
+          border-radius: 10px;
+        "
+      >
+        <h2 style="text-align: center; margin-bottom: 30px">🆕 Novedades</h2>
 
-    <!-- Se rellena dinámicamente desde app.js -->
-    <div id="news-container" style="
-        max-width: 900px;
-        margin: auto;
-        display: grid;
-        gap: 20px;
-    ">
-        <!-- Noticias dinámicas -->
-    </div>
-</section>
+        <!-- Se rellena dinámicamente desde app.js -->
+        <div
+          id="news-container"
+          style="
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            gap: 20px;
+          "
+        >
+          <!-- Noticias dinámicas -->
+        </div>
+      </section>
 
-<!-- ================= TEST ================= -->
-<section id="test-section" style="margin: 40px 20px;">
-    <h2>📝 Test</h2>
+      <!-- ================= TEST ================= -->
+      <section id="test-section" style="margin: 40px 20px">
+        <h2>📝 Test</h2>
 
-    <!-- FILTRO POR CATEGORÍA -->
-    <div style="
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    ">
-        <label for="category-filter" style="display:block; margin-bottom:10px; font-weight:bold;">
+        <!-- FILTRO POR CATEGORÍA -->
+        <div
+          style="
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+          "
+        >
+          <label
+            for="category-filter"
+            style="display: block; margin-bottom: 10px; font-weight: bold"
+          >
             📚 Selecciona categoría
-        </label>
-        <select id="category-filter" style="
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #667eea;
-            border-radius: 5px;
-            font-size: 14px;
-        ">
+          </label>
+          <select
+            id="category-filter"
+            style="
+              width: 100%;
+              padding: 10px;
+              border: 2px solid #667eea;
+              border-radius: 5px;
+              font-size: 14px;
+            "
+          >
             <option value="all">📚 Todas las categorías</option>
-        </select>
-    </div>
+          </select>
+        </div>
 
-    <!-- INICIAR TEST -->
-    <button id="startBtn" onclick="startTest()" style="
-        background: #667eea;
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-        margin-bottom: 20px;
-    ">
-        ▶ Iniciar test
-    </button>
+        <!-- INICIAR TEST -->
+        <button
+          id="startBtn"
+          onclick="startTest()"
+          style="
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+          "
+        >
+          ▶ Iniciar test
+        </button>
 
-    <!-- CONTENEDOR DEL TEST -->
-    <div id="test" style="margin-bottom: 20px;"></div>
+        <!-- CONTENEDOR DEL TEST -->
+        <div id="test" style="margin-bottom: 20px"></div>
 
-    <!-- CORREGIR -->
-    <button id="correctBtn" onclick="correctTest()" style="
-        background: #28a745;
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-        margin-bottom: 20px;
-        display: none;
-    ">
-        ✔ Corregir test
-    </button>
+        <!-- CORREGIR -->
+        <button
+          id="correctBtn"
+          onclick="correctTest()"
+          style="
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: none;
+          "
+        >
+          ✔ Corregir test
+        </button>
 
-    <!-- RESULTADO -->
-    <div id="result" style="font-weight:bold;"></div>
-</section>
+        <!-- RESULTADO -->
+        <div id="result" style="font-weight: bold"></div>
+      </section>
+    </main>
 
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer style="
-    background: #f8f9fa;
-    padding: 20px;
-    text-align: center;
-    font-size: 12px;
-    color: #666;
-    border-top: 1px solid #ddd;
-">
-    <p>
+    <!-- ================= FOOTER ================= -->
+    <footer
+      style="
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+        border-top: 1px solid #ddd;
+      "
+    >
+      <p>
         Plataforma creada con fines formativos ·
-        <a href="#" style="color:#667eea; text-decoration:none;">Contacto</a>
-    </p>
-    <p>2026 · VetOposiciones</p>
-</footer>
+        <a href="#" style="color: #667eea; text-decoration: none">Contacto</a>
+      </p>
+      <p>2026 · VetOposiciones</p>
+    </footer>
 
-<!-- Tu JS principal (carga questions.json desde app.js con fetch) -->
-<script src="app.js" defer></script>
-</body>
+    <!-- Tu JS principal -->
+    <script src="app.js" defer></script>
+  </body>
 </html>
