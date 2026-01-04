@@ -1,0 +1,22 @@
+[
+  {
+    "question": "¿A partir de qué momento una hembra preñada se considera no apta para el transporte según el Reglamento (CE) nº 1/2005?",
+    "a": "Cuando ha superado el 50 % de la gestación.",
+    "b": "Cuando ha superado el 90 % o más del tiempo de gestación previsto.",
+    "c": "Durante todo el último tercio de gestación.",
+    "d": "Solo si muestra signos de parto inminente.",
+    "correct": "B",
+    "category": "🐄 Bienestar Animal"
+  },
+  {
+    "question": "¿Cuál es el tiempo de espera mínimo recomendado por la EFSA para abrir el útero tras la muerte de la madre?",
+    "a": "5 minutos.",
+    "b": "15 minutos.",
+    "c": "30 minutos.",
+    "d": "60 minutos.",
+    "correct": "C",
+    "category": "🐄 Bienestar Animal"
+  }
+
+  /* PEGAS AQUÍ LAS 90 PREGUNTAS COMPLETAS */
+]
