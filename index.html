@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="App gratis para practicar oposiciones de veterinaria. Test por categorías, corrección automática y preguntas basadas en normativa vigente.">
+    <meta name="description" content="App gratuita para practicar oposiciones de veterinaria. Test por categorías, corrección automática y preguntas basadas en normativa vigente.">
     <meta name="keywords" content="oposiciones veterinaria, test veterinaria, bienestar animal, sanidad animal, CLM">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VetOposiciones · Test Veterinaria</title>
@@ -87,13 +87,14 @@
 ">
     <h2 style="text-align: center; margin-bottom: 30px;">🆕 Novedades</h2>
 
-    <!-- CONTENIDO DINÁMICO DESDE app.js -->
-    <div style="
+    <!-- Se rellena dinámicamente desde app.js -->
+    <div id="news-container" style="
         max-width: 900px;
         margin: auto;
         display: grid;
         gap: 20px;
     ">
+        <!-- Noticias dinámicas -->
     </div>
 </section>
 
@@ -101,6 +102,7 @@
 <section id="test-section" style="margin: 40px 20px;">
     <h2>📝 Test</h2>
 
+    <!-- FILTRO POR CATEGORÍA -->
     <div style="
         background: #f8f9fa;
         padding: 15px;
@@ -121,7 +123,8 @@
         </select>
     </div>
 
-    <button onclick="startTest()" style="
+    <!-- INICIAR TEST -->
+    <button id="startBtn" onclick="startTest()" style="
         background: #667eea;
         color: white;
         padding: 12px 30px;
@@ -135,9 +138,11 @@
         ▶ Iniciar test
     </button>
 
+    <!-- CONTENEDOR DEL TEST -->
     <div id="test" style="margin-bottom: 20px;"></div>
 
-    <button onclick="correctTest()" style="
+    <!-- CORREGIR -->
+    <button id="correctBtn" onclick="correctTest()" style="
         background: #28a745;
         color: white;
         padding: 12px 30px;
@@ -147,10 +152,12 @@
         cursor: pointer;
         font-weight: bold;
         margin-bottom: 20px;
+        display: none;
     ">
         ✔ Corregir test
     </button>
 
+    <!-- RESULTADO -->
     <div id="result" style="font-weight:bold;"></div>
 </section>
 
