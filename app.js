@@ -12,7 +12,7 @@ const QUESTION_FILES = [
 ];
 
 // ==================================================
-// ===== FRASES MOTIVADORAS =========================
+// ===== FRASES MOTIVADORAS (RESULTADO) ==============
 // ==================================================
 const motivationalPhrases = {
   excellent: [
@@ -108,6 +108,98 @@ function renderNovedades() {
 }
 
 // ==================================================
+// ===== MASCOTA =====================================
+// ==================================================
+const mascotName = "Vito";
+
+const mascotByCategory = [
+  { match: "🐄 Bienestar Animal", emoji: "🐄" },
+  { match: "🍗 Higiene Alimentaria", emoji: "🍗" },
+  { match: "🏷️ Etiquetado", emoji: "🏷️" },
+  { match: "🦠 Sanidad Animal", emoji: "🦠" },
+];
+
+const mascotPhrases = {
+  general: [
+    "¡Hola! Hoy toca avanzar un poquito. Con constancia se gana.",
+    "Cada test es un paso más. Vamos a por ello.",
+    "Cinco minutos de test hoy valen oro mañana.",
+    "Si fallas, perfecto: acabas de encontrar qué estudiar.",
+    "Respira, contesta y sigue. Esto se construye con práctica.",
+  ],
+  "🐄 Bienestar Animal": [
+    "Bienestar animal: piensa en el animal antes que en el trámite.",
+    "Transporte y sacrificio: precisión y calma.",
+    "Hoy toca clavar normativa y sentido común.",
+  ],
+  "🍗 Higiene Alimentaria": [
+    "Higiene: temperaturas y tiempos son tus mejores amigos.",
+    "APPCC: identifica el riesgo y controla el punto crítico.",
+    "Un detalle de higiene hoy te evita un brote mañana.",
+  ],
+  "🏷️ Etiquetado": [
+    "Etiquetado: lo que no se dice bien, se vende mal.",
+    "Ojo con alérgenos y campo visual: suelen caer mucho.",
+    "Lote, fechas y denominación: tríada clave.",
+  ],
+  "🦠 Sanidad Animal": [
+    "Sanidad animal: piensa en prevención y en rutas de transmisión.",
+    "Zoonosis: protege al animal y también a las personas.",
+    "Hoy toca memoria + lógica epidemiológica.",
+  ],
+};
+
+function setMascotMessage(text) {
+  const msg = document.getElementById("mascot-message");
+  const card = document.getElementById("mascot-card");
+  if (!msg) return;
+
+  msg.textContent = text;
+
+  if (card) {
+    card.classList.remove("mascot-pop");
+    // reflow para reiniciar animación
+    void card.offsetWidth;
+    card.classList.add("mascot-pop");
+  }
+}
+
+function setMascotEmoji(emoji) {
+  const el = document.getElementById("mascot-emoji");
+  if (el) el.textContent = emoji;
+}
+
+function getSelectedCategory() {
+  return document.getElementById("category-filter")?.value || "all";
+}
+
+function getMascotEmojiForCategory(category) {
+  if (category === "all") return "🩺";
+  const found = mascotByCategory.find((x) => x.match === category);
+  return found ? found.emoji : "🩺";
+}
+
+function pickRandom(arr) {
+  if (!arr || arr.length === 0) return "";
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function updateMascotForCategory(category) {
+  const nameEl = document.getElementById("mascot-name");
+  if (nameEl) nameEl.textContent = mascotName;
+
+  const emoji = getMascotEmojiForCategory(category);
+  setMascotEmoji(emoji);
+
+  const pool =
+    category !== "all" && mascotPhrases[category]
+      ? mascotPhrases[category]
+      : mascotPhrases.general;
+
+  setMascotMessage(pickRandom(pool));
+}
+
+// ==================================================
 // ===== CARGA DE PREGUNTAS (Múltiples JSONs) ========
 // ==================================================
 async function loadAllQuestions() {
@@ -142,12 +234,9 @@ async function loadAllQuestions() {
       })
       .map((q) => ({ ...q, correct: String(q.correct).toUpperCase() }));
 
-    console.log(
-      `✅ Cargadas ${allQuestions.length} preguntas de ${QUESTION_FILES.length} archivos`
-    );
-
     updateCategoryFilter();
-    renderQuestionStats(); // 🆕 pinta totales (y también los de la categoría seleccionada)
+    renderQuestionStats();
+    updateStatsForSelectedCategory();
 
     if (allQuestions.length === 0) {
       const testDiv = document.getElementById("test");
@@ -172,6 +261,7 @@ function updateCategoryFilter() {
   categoryFilter.innerHTML = `<option value="all">📚 Todas las categorías</option>`;
 
   const categories = [...new Set(allQuestions.map((q) => q.category))].sort();
+
   categories.forEach((cat) => {
     const option = document.createElement("option");
     option.value = cat;
@@ -190,10 +280,6 @@ function getCountsByCategory() {
   }, {});
 }
 
-function getSelectedCategory() {
-  return document.getElementById("category-filter")?.value || "all";
-}
-
 function getAvailableInSelectedCategory() {
   const selected = getSelectedCategory();
   if (selected === "all") return allQuestions.length;
@@ -207,7 +293,6 @@ function renderQuestionStats() {
 
   const total = allQuestions.length;
   const counts = getCountsByCategory();
-
   const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
   statsTop.innerHTML = `
@@ -219,8 +304,6 @@ function renderQuestionStats() {
   byCatEl.innerHTML = sorted
     .map(([cat, n]) => `<div>• ${cat}: ${n}</div>`)
     .join("");
-
-  updateStatsForSelectedCategory();
 }
 
 function updateStatsForSelectedCategory() {
@@ -234,6 +317,15 @@ function updateStatsForSelectedCategory() {
     selected === "all" ? "Disponibles (todas)" : `Disponibles en ${selected}`;
 
   availableEl.innerHTML = `• ${label}: <b>${available}</b>`;
+
+  const startBtn = document.getElementById("startBtn");
+  if (startBtn) {
+    const willUse = Math.min(MAX_QUESTIONS, available);
+    startBtn.textContent =
+      selected === "all"
+        ? `▶ Iniciar test (${willUse} de ${available})`
+        : `▶ Iniciar test (${willUse} de ${available})`;
+  }
 }
 
 // ==================================================
@@ -295,13 +387,13 @@ function startTest() {
   testDiv.innerHTML = currentTest
     .map(
       (q, i) => `
-      <div style="background:#fff; padding:15px; border-radius:8px; margin-bottom:15px; border:1px solid #eee;">
+      <div class="question-block">
         <div style="font-size:12px; color:#666; margin-bottom:8px;">${q.category}</div>
         <div style="font-weight:bold; margin-bottom:10px;">${i + 1}. ${q.question}</div>
         ${q.options
           .map(
             (opt) => `
-            <label style="display:block; margin:6px 0; cursor:pointer;">
+            <label>
               <input type="radio" name="q${i}" value="${opt.key}" onchange="saveAnswer(${i}, '${opt.key}')"/>
               ${opt.key}) ${opt.text}
             </label>
@@ -321,11 +413,10 @@ function saveAnswer(index, value) {
 }
 
 function correctTest() {
-  const testDiv = document.getElementById("test");
   const resultDiv = document.getElementById("result");
   const correctBtn = document.getElementById("correctBtn");
 
-  if (!testDiv || !resultDiv) return;
+  if (!resultDiv) return;
 
   let correctCount = 0;
 
@@ -337,17 +428,14 @@ function correctTest() {
       const label = r.parentElement;
       if (!label) return;
 
-      label.style.fontWeight = "normal";
-      label.style.color = "#000";
+      label.classList.remove("correct", "incorrect");
 
       if (r.value === q.correct) {
-        label.style.color = "#28a745";
-        label.style.fontWeight = "bold";
+        label.classList.add("correct");
       }
 
       if (selected && r.value === selected && selected !== q.correct) {
-        label.style.color = "#dc3545";
-        label.style.fontWeight = "bold";
+        label.classList.add("incorrect");
       }
     });
 
@@ -386,6 +474,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (categoryFilter) {
     categoryFilter.addEventListener("change", () => {
       updateStatsForSelectedCategory();
+      updateMascotForCategory(getSelectedCategory());
     });
   }
+
+  // Frase aleatoria al cargar (refresco)
+  updateMascotForCategory(getSelectedCategory());
 });
+
