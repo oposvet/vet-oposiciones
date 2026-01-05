@@ -126,7 +126,7 @@
             background: #f8f9fa;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
           "
         >
           <label
@@ -147,6 +147,29 @@
           >
             <option value="all">📚 Todas las categorías</option>
           </select>
+        </div>
+
+        <!-- RESUMEN DE PREGUNTAS -->
+        <div
+          id="question-stats"
+          style="
+            background: #f1f5ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 0 0 20px 0;
+            border: 1px solid #dbe4ff;
+          "
+        >
+          <div style="font-weight: bold; margin-bottom: 8px">
+            📊 Banco de preguntas
+          </div>
+
+          <div id="stats-top" style="color: #333; line-height: 1.5"></div>
+
+          <div
+            id="questions-by-category"
+            style="margin-top: 10px; color: #555"
+          ></div>
         </div>
 
         <!-- INICIAR TEST -->
