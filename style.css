@@ -96,6 +96,90 @@ main h3 {
   border-left: 4px solid #dc3545;
 }
 
+/* ================== MASCOTA ================== */
+.mascot-card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e6e9ff;
+  border-left: 5px solid #667eea;
+  border-radius: 10px;
+  padding: 14px;
+  margin: 0 0 14px 0;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.08);
+}
+
+.mascot-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mascot-emoji {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #f1f5ff;
+  border: 1px solid #dbe4ff;
+  font-size: 22px;
+}
+
+.mascot-avatar {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.mascot-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.mascot-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+#mascot-name {
+  font-weight: 800;
+  color: #667eea;
+}
+
+.mascot-subtitle {
+  font-size: 12px;
+  color: #777;
+}
+
+.mascot-message {
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #333;
+}
+
+/* pequeña animación cuando cambia el mensaje */
+@keyframes popIn {
+  0% {
+    transform: translateY(2px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.mascot-pop {
+  animation: popIn 220ms ease-out;
+}
+
 /* Mobile responsivo */
 @media (max-width: 600px) {
   main {
@@ -112,5 +196,14 @@ main h3 {
 
   .question-block label {
     padding: 8px;
+  }
+
+  .mascot-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mascot-left {
+    width: 100%;
   }
 }
