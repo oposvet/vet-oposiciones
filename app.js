@@ -47,12 +47,19 @@ let userAnswers = [];
 // ==================================================
 // ===== NOVEDADES ==================================
 // ==================================================
+// Nota: Etiquetado pasa a 60 preguntas (10 + 50 nuevas) si actualizas questions_etiquetado.json.
 const novedades = [
+  {
+    fecha: "05/01/2026",
+    titulo: "🏷️ Etiquetado ampliado",
+    descripcion:
+      "Se han añadido 50 preguntas nuevas de etiquetado (total: 60). Incluye 1169/2011, lote, alegaciones nutricionales, aditivos, IG y más.",
+  },
   {
     fecha: "04/01/2026",
     titulo: "🆕 Estructura modular con 4 categorías",
     descripcion:
-      "La app ahora carga preguntas desde 4 categorias distintas. Más mantenible, escalable y fácil de actualizar.",
+      "La app ahora carga preguntas desde 4 categorías distintas. Más mantenible, escalable y fácil de actualizar.",
   },
   {
     fecha: "04/01/2026",
@@ -70,7 +77,7 @@ const novedades = [
     fecha: "04/01/2026",
     titulo: "🏷️ Etiquetado",
     descripcion:
-      "10 preguntas sobre Reglamento (UE) 1169/2011, alérgenos, códigos E y marcado de establecimiento.",
+      "Preguntas sobre Reglamento (UE) 1169/2011, alérgenos, códigos E y marcado de establecimiento.",
   },
   {
     fecha: "04/01/2026",
@@ -102,11 +109,10 @@ function renderNovedades() {
 }
 
 // ==================================================
-// ===== CARGA DE PREGUNTAS (Múltiples JSONs) =====
+// ===== CARGA DE PREGUNTAS (Múltiples JSONs) ========
 // ==================================================
 async function loadAllQuestions() {
   try {
-    // Cargar todos los archivos en paralelo
     const promises = QUESTION_FILES.map((file) =>
       fetch(file, { cache: "no-store" })
         .then((res) => {
@@ -120,11 +126,8 @@ async function loadAllQuestions() {
     );
 
     const results = await Promise.all(promises);
-
-    // Combinar todos los resultados
     const allData = results.flat();
 
-    // Validar y filtrar
     allQuestions = allData
       .filter((q) => {
         return (
@@ -138,14 +141,7 @@ async function loadAllQuestions() {
           typeof q.category === "string"
         );
       })
-      .map((q) => ({
-        ...q,
-        correct: String(q.correct).toUpperCase(),
-      }));
-
-    console.log(
-      `✅ Cargadas ${allQuestions.length} preguntas de ${QUESTION_FILES.length} archivos`
-    );
+      .map((q) => ({ ...q, correct: String(q.correct).toUpperCase() }));
 
     updateCategoryFilter();
 
@@ -153,7 +149,7 @@ async function loadAllQuestions() {
       const testDiv = document.getElementById("test");
       if (testDiv) {
         testDiv.innerHTML =
-          "<p style='color: red;'>No se han podido cargar preguntas. Verifica que los archivos JSON existan.</p>";
+          "<p>No se han podido cargar preguntas. Verifica que los archivos JSON existan.</p>";
       }
     }
   } catch (error) {
@@ -170,6 +166,7 @@ function updateCategoryFilter() {
   if (!categoryFilter) return;
 
   categoryFilter.innerHTML = `<option value="all">📚 Todas las categorías</option>`;
+
   const categories = [...new Set(allQuestions.map((q) => q.category))].sort();
   categories.forEach((cat) => {
     const option = document.createElement("option");
@@ -191,15 +188,15 @@ function shuffleQuestionOptions(question) {
     key,
     text: question[key.toLowerCase()],
   }));
+
   shuffleArray(options);
+
   return { ...question, options };
 }
 
 function setError(message) {
   const testDiv = document.getElementById("test");
-  if (testDiv) {
-    testDiv.innerHTML = `<p style="color: red; font-weight: bold;">${message}</p>`;
-  }
+  if (testDiv) testDiv.innerHTML = `<p style="color:red;">${message}</p>`;
 }
 
 // ==================================================
@@ -221,160 +218,109 @@ function startTest() {
   userAnswers = [];
 
   const category = document.getElementById("category-filter")?.value || "all";
+
   let filtered = allQuestions.filter(
     (q) => category === "all" || q.category === category
   );
 
   if (filtered.length === 0) {
-    testDiv.innerHTML =
-      "<p style='color: orange;'>No hay preguntas disponibles para esta categoría.</p>";
+    testDiv.innerHTML = "<p>No hay preguntas disponibles para esta categoría.</p>";
     if (correctBtn) correctBtn.style.display = "none";
     return;
   }
 
-  filtered = shuffleArray(filtered).slice(
-    0,
-    Math.min(MAX_QUESTIONS, filtered.length)
-  );
+  filtered = shuffleArray(filtered).slice(0, Math.min(MAX_QUESTIONS, filtered.length));
   currentTest = filtered.map((q) => shuffleQuestionOptions(q));
 
   testDiv.innerHTML = currentTest
     .map(
       (q, i) => `
-    <div class="question-block" id="question-${i}">
-      <p style="font-size: 12px; color: #999; margin-bottom: 5px;">${q.category}</p>
-      <h3 style="margin: 0 0 15px 0; color: #333; font-size: 16px;">
-        <strong>${i + 1}. ${q.question}</strong>
-      </h3>
-      <div>
+      <div style="background:#fff; padding:15px; border-radius:8px; margin-bottom:15px; border:1px solid #eee;">
+        <div style="font-size:12px; color:#666; margin-bottom:8px;">${q.category}</div>
+        <div style="font-weight:bold; margin-bottom:10px;">${i + 1}. ${q.question}</div>
         ${q.options
           .map(
             (opt) => `
-          <label style="display: block; padding: 10px; margin: 8px 0; border-radius: 5px; cursor: pointer; background: #f8f9fa; transition: all 0.2s;">
-            <input 
-              type="radio" 
-              name="question-${i}" 
-              value="${opt.key}"
-              onchange="userAnswers[${i}] = this.value"
-              style="cursor: pointer; margin-right: 10px;"
-            />
-            ${opt.key}. ${opt.text}
-          </label>
-        `
+            <label style="display:block; margin:6px 0; cursor:pointer;">
+              <input type="radio" name="q${i}" value="${opt.key}" onchange="saveAnswer(${i}, '${opt.key}')"/>
+              ${opt.key}) ${opt.text}
+            </label>
+          `
           )
           .join("")}
       </div>
-    </div>
-  `
+    `
     )
     .join("");
 
   if (correctBtn) correctBtn.style.display = "inline-block";
 }
 
-// ==================================================
-// ===== CORRECCIÓN ==================================
-// ==================================================
+function saveAnswer(index, value) {
+  userAnswers[index] = value;
+}
+
 function correctTest() {
+  const testDiv = document.getElementById("test");
   const resultDiv = document.getElementById("result");
-  if (!resultDiv) return;
+  const correctBtn = document.getElementById("correctBtn");
+
+  if (!testDiv || !resultDiv) return;
 
   let correctCount = 0;
 
-  // Colorea cada pregunta
+  // Marcar respuestas
   currentTest.forEach((q, i) => {
-    const userAnswer = userAnswers[i];
-    const questionBlock = document.getElementById(`question-${i}`);
-    const isCorrect = userAnswer === q.correct;
+    const selected = userAnswers[i];
+    const radios = document.getElementsByName(`q${i}`);
 
-    if (isCorrect) {
-      correctCount++;
-    }
+    radios.forEach((r) => {
+      const label = r.parentElement;
+      if (!label) return;
 
-    if (questionBlock) {
-      // Color de fondo según acierto/error
-      if (isCorrect) {
-        questionBlock.style.cssText =
-          "background: #d4edda; border-left: 4px solid #28a745; padding: 15px; margin: 15px 0; border-radius: 5px; opacity: 0.8;";
-      } else {
-        questionBlock.style.cssText =
-          "background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 15px 0; border-radius: 5px; opacity: 0.8;";
+      // Reset estilos
+      label.style.fontWeight = "normal";
+      label.style.color = "#000";
+
+      if (r.value === q.correct) {
+        label.style.color = "#28a745";
+        label.style.fontWeight = "bold";
       }
 
-      // Colorea los labels (opciones)
-      const labels = questionBlock.querySelectorAll("label");
-      labels.forEach((label) => {
-        const radio = label.querySelector("input[type='radio']");
-        if (!radio) return;
+      if (selected && r.value === selected && selected !== q.correct) {
+        label.style.color = "#dc3545";
+        label.style.fontWeight = "bold";
+      }
+    });
 
-        const optionKey = radio.value;
-
-        if (optionKey === q.correct) {
-          // Opción correcta en verde
-          label.style.background = "#c3e6cb";
-          label.style.borderLeft = "3px solid #28a745";
-          label.style.fontWeight = "bold";
-        } else if (optionKey === userAnswer && userAnswer !== q.correct) {
-          // Opción seleccionada incorrecta en rojo
-          label.style.background = "#f5c6cb";
-          label.style.borderLeft = "3px solid #dc3545";
-          label.style.fontWeight = "bold";
-        }
-      });
-    }
+    if (selected === q.correct) correctCount++;
   });
 
-  // Calcula nota
   const totalQuestions = currentTest.length;
-  const score = ((correctCount / totalQuestions) * 10).toFixed(2);
+  const score = (correctCount / totalQuestions) * 10;
 
-  // Selecciona frase motivadora según nota
-  let phraseCategory;
-  if (score >= 9) phraseCategory = "excellent";
-  else if (score >= 7) phraseCategory = "good";
-  else if (score >= 5) phraseCategory = "medium";
-  else phraseCategory = "low";
+  let phraseList = motivationalPhrases.low;
+  if (score >= 9) phraseList = motivationalPhrases.excellent;
+  else if (score >= 7) phraseList = motivationalPhrases.good;
+  else if (score >= 5) phraseList = motivationalPhrases.medium;
 
-  const phrase =
-    motivationalPhrases[phraseCategory][
-      Math.floor(Math.random() * motivationalPhrases[phraseCategory].length)
-    ];
+  const phrase = phraseList[Math.floor(Math.random() * phraseList.length)];
 
-  // Muestra resultado
   resultDiv.innerHTML = `
-    <div style="
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      margin-top: 30px;
-    ">
-      <h2 style="margin: 0 0 10px 0; font-size: 24px;">Tu Resultado</h2>
-      <div style="
-        background: rgba(255,255,255,0.2);
-        padding: 20px;
-        border-radius: 8px;
-        margin: 20px 0;
-      ">
-        <p style="font-size: 48px; margin: 0; font-weight: bold;">${score} / 10</p>
-        <p style="font-size: 18px; margin: 10px 0 0 0;">Acertos: ${correctCount}/${totalQuestions}</p>
-      </div>
-      <p style="font-size: 20px; margin: 20px 0 0 0; font-weight: bold;">
-        ${phrase}
-      </p>
+    <div style="padding:15px; background:#f8f9fa; border-radius:8px; border:1px solid #eee;">
+      <div>✅ Nota: ${score.toFixed(2)} / 10</div>
+      <div>📌 Aciertos: ${correctCount}/${totalQuestions}</div>
+      <div style="margin-top:10px;">${phrase}</div>
     </div>
   `;
 
-  // Oculta botón de corregir
-  const correctBtn = document.getElementById("correctBtn");
   if (correctBtn) correctBtn.style.display = "none";
 }
 
 // ==================================================
-// ===== INICIALIZACIÓN ==============================
+// ===== INIT ========================================
 // ==================================================
 document.addEventListener("DOMContentLoaded", () => {
   renderNovedades();
-  loadAllQuestions(); // Cambio: ahora se llama loadAllQuestions()
+  loadAllQuestions();
 });
