@@ -88,5 +88,456 @@
     "d": "No hay requisitos específicos.",
     "correct": "B",
     "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuál es el tamaño de letra mínimo (altura de la 'x') para las menciones obligatorias en envases cuya superficie mayor sea superior a 80 cm²?",
+    "a": "0,9 mm",
+    "b": "1,2 mm",
+    "c": "1,5 mm",
+    "d": "2,0 mm",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el Reglamento (UE) 1169/2011, ¿qué menciones deben aparecer obligatoriamente en el mismo campo visual?",
+    "a": "Denominación del alimento, cantidad neta y grado alcohólico",
+    "b": "Lista de ingredientes, lote y fecha de caducidad",
+    "c": "Denominación, lote e información nutricional",
+    "d": "País de origen y modo de empleo",
+    "correct": "A",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué letra debe preceder obligatoriamente a la indicación del lote, salvo que se distinga claramente de otras indicaciones?",
+    "a": "B (Batch)",
+    "b": "C (Código)",
+    "c": "L (Lote)",
+    "d": "P (Producción)",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "De acuerdo con el Reglamento (CE) 1924/2006, ¿cuál es el límite para declarar que un alimento sólido tiene 'bajo valor energético'?",
+    "a": "20 kcal/100 g",
+    "b": "40 kcal/100 g",
+    "c": "100 kcal/100 g",
+    "d": "4 kcal/100 g",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué frase debe incluirse en el etiquetado de alimentos que contienen el colorante Rojo Allura AC (E 129)?",
+    "a": "Contiene colorantes artificiales",
+    "b": "Puede tener efectos negativos sobre la actividad y la atención de los niños",
+    "c": "No recomendado para menores de 3 años",
+    "d": "Puede causar reacciones alérgicas",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según la Nota de AESAN, ¿qué forma debe tener siempre la marca sanitaria aplicada por los servicios oficiales?",
+    "a": "Circular",
+    "b": "Rectangular",
+    "c": "Oval",
+    "d": "Cuadrada",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Bajo el Reglamento (UE) 2024/1143, ¿qué condición se exige para usar una IG en el nombre de un producto transformado?",
+    "a": "No debe contener ningún otro producto comparable al ingrediente con IG",
+    "b": "Debe ser el ingrediente mayoritario (>50%)",
+    "c": "Debe indicarse el nombre del productor original",
+    "d": "Solo puede usarse en la lista de ingredientes",
+    "correct": "A",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En el caso de carnes de vacuno de animales de hasta 8 meses de edad, ¿cuál es su denominación de venta según el RD 1698/2003?",
+    "a": "Ternera",
+    "b": "Añojo",
+    "c": "Ternera blanca",
+    "d": "Novilla",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué porcentaje mínimo de hígado graso debe contener un 'parfait de foie' según el RD 474/2014?",
+    "a": "20%",
+    "b": "50%",
+    "c": "75%",
+    "d": "100%",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el informe del Ministerio de Consumo, ¿pueden los productos de V gama (tratados térmicamente) etiquetarse como 'frescos'?",
+    "a": "Sí, si se venden refrigerados",
+    "b": "No, por haber sufrido una transformación",
+    "c": "Sí, si sus ingredientes originales eran frescos",
+    "d": "Solo si se consumen en menos de 24 horas",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuál es el límite máximo de grasa para que la carne picada de vacuno sea considerada 'magra' según el Reglamento 1169/2011?",
+    "a": "10%",
+    "b": "15%",
+    "c": "7%",
+    "d": "20%",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Para declarar que un alimento es 'fuente de fibra', ¿cuánta cantidad debe contener como mínimo por 100 g?",
+    "a": "1,5 g",
+    "b": "3 g",
+    "c": "6 g",
+    "d": "10 g",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según la Directiva 2011/91/UE, ¿qué envases están exentos de la indicación del lote?",
+    "a": "Envases cuya cara mayor sea inferior a 10 cm²",
+    "b": "Envases de vidrio reutilizables",
+    "c": "Productos de panadería de consumo diario",
+    "d": "Aguas minerales",
+    "correct": "A",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En el etiquetado de tripas naturales, ¿cómo se denomina el producto si no ha sido calibrado ni madejado?",
+    "a": "Tripa seca",
+    "b": "Tripa original",
+    "c": "Tripa ancha",
+    "d": "Tripa de categoría tercera",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué mención es obligatoria para productos que parecen una pieza entera pero son combinados (ej. pescado)?",
+    "a": "Producto reconstruido",
+    "b": "Elaborado a partir de piezas de pescado",
+    "c": "Unión de lomos seleccionados",
+    "d": "Pescado conformado",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el Reglamento 1169/2011, ¿cómo deben aparecer las sustancias alergénicas en la lista de ingredientes?",
+    "a": "En una lista aparte al final",
+    "b": "Con un tamaño de letra doble",
+    "c": "Destacadas mediante una composición tipográfica diferente",
+    "d": "Escritas en el idioma del país de origen",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuál es la definición de 'lote' según la Directiva 2011/91/UE?",
+    "a": "Unidades vendidas en un mismo día",
+    "b": "Unidades producidas en circunstancias prácticamente idénticas",
+    "c": "Productos con la misma fecha de caducidad",
+    "d": "Unidades de un mismo palé de transporte",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Bajo el Reglamento 1333/2008, ¿qué advertencia requiere un edulcorante de mesa con aspartamo?",
+    "a": "Un consumo excesivo puede tener efectos laxantes",
+    "b": "Contiene una fuente de fenilalanina",
+    "c": "No apto para cocinar",
+    "d": "Producto de bajo valor calórico",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué nombre recibe el sistema de trazabilidad de 'un eslabón antes y uno después' para alimentos de origen animal?",
+    "a": "Trazabilidad interna",
+    "b": "Trazabilidad obligatoria (Reglamento 931/2011)",
+    "c": "Control de calidad preventivo",
+    "d": "Trazabilidad de origen único",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Para usar la mención 'Gran Reserva' en un jamón, ¿cuál es el periodo mínimo de elaboración?",
+    "a": "9 meses",
+    "b": "12 meses",
+    "c": "15 meses",
+    "d": "18 meses",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué porcentaje de proteínas deben aportar las mismas para declarar 'alto contenido de proteínas'?",
+    "a": "12% del valor energético",
+    "b": "20% del valor energético",
+    "c": "30% del valor energético",
+    "d": "50% del valor energético",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el RD 474/2014, ¿qué mención debe usarse si se añaden féculas a un producto de piezas cárnicas cocidas?",
+    "a": "Jamón extra",
+    "b": "Fiambre de...",
+    "c": "Sucedáneo cárnico",
+    "d": "Preparado de carne",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué información debe acompañar a la denominación de un alimento que ha sido congelado y se vende descongelado?",
+    "a": "Refrigerado",
+    "b": "Descongelado",
+    "c": "Anteriormente congelado",
+    "d": "Consumo inmediato",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En el etiquetado de bebidas con más de 1,2% de alcohol, ¿cuántos decimales máximos puede tener la cifra del grado?",
+    "a": "Ninguno",
+    "b": "Un decimal",
+    "c": "Dos decimales",
+    "d": "Tres decimales",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el Reglamento 1333/2008, ¿qué significa el término 'quantum satis'?",
+    "a": "Dosis máxima de 100 mg/kg",
+    "b": "Sin nivel numérico máximo, usado según la buena práctica",
+    "c": "Solo para uso profesional",
+    "d": "Contenido mínimo garantizado",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuál es la categoría de un animal de la especie bovina de entre 12 y 24 meses de edad?",
+    "a": "Ternera",
+    "b": "Novillo",
+    "c": "Añojo",
+    "d": "Cebón",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En la lista de ingredientes, ¿cuándo es obligatorio declarar el agua añadida?",
+    "a": "Siempre",
+    "b": "Si sobrepasa el 5% del peso del producto acabado",
+    "c": "Si sobrepasa el 2% del peso",
+    "d": "Solo en productos congelados",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué mención es obligatoria para alimentos con más de un 10% de polioles añadidos?",
+    "a": "Sin azúcar",
+    "b": "Un consumo excesivo puede producir efectos laxantes",
+    "c": "Bajo en calorías",
+    "d": "Contiene edulcorantes naturales",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Para declarar 'sin azúcares', el producto no debe contener más de:",
+    "a": "0,5 g de azúcares por 100 g o 100 ml",
+    "b": "5 g por 100 g",
+    "c": "0,1 g por 100 g",
+    "d": "2,5 g por 100 ml",
+    "correct": "A",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué unidad de medida se usa para el contenido neto de productos líquidos?",
+    "a": "Kilogramos",
+    "b": "Unidades de volumen (litros, ml, etc.)",
+    "c": "Gramos",
+    "d": "Peso escurrido",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el Reglamento 2024/1143, ¿qué símbolo es obligatorio en el etiquetado de productos agrícolas de la Unión con IG?",
+    "a": "El símbolo de la Unión asociado a la indicación",
+    "b": "La bandera del país de origen",
+    "c": "El código de barras",
+    "d": "El sello del consejo regulador únicamente",
+    "correct": "A",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué se entiende por 'ingrediente primario' según el Reglamento 1169/2011?",
+    "a": "Cualquier ingrediente que figure en la denominación",
+    "b": "Aquel que represente más del 50% del alimento",
+    "c": "El primer ingrediente de la lista",
+    "d": "Cualquier aditivo tecnológico",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En el etiquetado de vacuno, ¿qué indica la categoría 'V'?",
+    "a": "Animal de 8 a 12 meses",
+    "b": "Animal de menos de 8 meses",
+    "c": "Vacuno mayor",
+    "d": "Carne de lidia",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuándo se debe usar la fecha de caducidad en lugar de la de duración mínima?",
+    "a": "En todos los productos congelados",
+    "b": "En alimentos microbiológicamente muy perecederos",
+    "c": "En productos que duran más de 18 meses",
+    "d": "En bebidas alcohólicas",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el RD 773/2023, ¿qué debe figurar en el envase de un coadyuvante no destinado a venta al consumidor final?",
+    "a": "Información nutricional completa",
+    "b": "Que el producto no está destinado a la venta al consumidor final",
+    "c": "Precio de venta al público",
+    "d": "Símbolo de la Unión",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué mención es facultativa para jamones curados con 9 meses de elaboración?",
+    "a": "Reserva",
+    "b": "Gran Reserva",
+    "c": "Bodega o cava",
+    "d": "Añejo",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Bajo el Reglamento 1169/2011, ¿qué información es obligatoria en envases de <10 cm²?",
+    "a": "Lista de ingredientes y lote",
+    "b": "Denominación, alérgenos, cantidad neta y fecha",
+    "c": "Información nutricional",
+    "d": "País de origen",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué porcentaje de reducción de un nutriente se exige para declarar 'contenido reducido de...'?",
+    "a": "10%",
+    "b": "20%",
+    "c": "30% como mínimo",
+    "d": "50%",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según la Nota de AESAN, ¿en qué idioma debe estar la información de la marca de identificación en España?",
+    "a": "Cualquier idioma de la UE",
+    "b": "Al menos en la lengua española oficial del Estado",
+    "c": "Solo en inglés",
+    "d": "En latín",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuál es el factor de conversión para calcular las kcal de la fibra alimentaria?",
+    "a": "4 kcal/g",
+    "b": "9 kcal/g",
+    "c": "2 kcal/g",
+    "d": "0 kcal/g",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En el etiquetado de vacuno picado, ¿cuándo es obligatorio el origen si hay mezcla de especies?",
+    "a": "Si el contenido de vacuno es superior al 50%",
+    "b": "Si contiene cualquier cantidad de vacuno",
+    "c": "Solo si es 100% vacuno",
+    "d": "Si se vende a granel",
+    "correct": "A",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué ingrediente se denomina 'chorizo blanco' según el RD 474/2014?",
+    "a": "Chorizo sin grasa",
+    "b": "Chorizo elaborado sin pimentón",
+    "c": "Chorizo de ave",
+    "d": "Chorizo con exceso de fécula",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el Reglamento 1169/2011, ¿qué nutriente se calcula como sodio x 2,5?",
+    "a": "Proteína",
+    "b": "Fibra",
+    "c": "Sal",
+    "d": "Grasas saturadas",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cómo se clasifican las tripas naturales de categoría primera?",
+    "a": "Flojas a la presión",
+    "b": "Consistencia firme, sin agujeros y sin restos de grasa",
+    "c": "Con agujeros de <1 mm",
+    "d": "Originales",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Bajo el Reglamento 1333/2008, ¿en qué caso se prohíbe declarar 'X % sin grasa'?",
+    "a": "En todos los alimentos",
+    "b": "Cuando el producto declara 'sin grasa'",
+    "c": "Solo en lácteos",
+    "d": "En productos infantiles",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué información debe aparecer en el etiquetado si un alimento ha sido irradiado?",
+    "a": "Símbolo de peligro biológico",
+    "b": "Tratado con radiación ionizante",
+    "c": "Alimento conservado físicamente",
+    "d": "Producto de alta seguridad",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "Según el RD 1698/2003, ¿cuál es el periodo de conservación de los registros de trazabilidad para minoristas?",
+    "a": "3 años",
+    "b": "5 años",
+    "c": "1 año como mínimo",
+    "d": "6 meses",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Cuál es la ingesta de referencia de energía para un adulto medio según el anexo XIII?",
+    "a": "1500 kcal",
+    "b": "2500 kcal",
+    "c": "2000 kcal (8400 kJ)",
+    "d": "1800 kcal",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "En el etiquetado de tripas, ¿qué especie es la única que permite mucosa por el exterior?",
+    "a": "Bovino",
+    "b": "Ovino",
+    "c": "Porcino",
+    "d": "Equino",
+    "correct": "C",
+    "category": "🏷️ Etiquetado"
+  },
+  {
+    "question": "¿Qué término se usa para productos cárnicos con un 4% de cereal/hortalizas?",
+    "a": "Hamburguesa",
+    "b": "Burguer meat",
+    "c": "Albóndiga",
+    "d": "Preparado magro",
+    "correct": "B",
+    "category": "🏷️ Etiquetado"
   }
+
 ]
