@@ -47,7 +47,6 @@ let userAnswers = [];
 // ==================================================
 // ===== NOVEDADES ==================================
 // ==================================================
-// Nota: Etiquetado pasa a 60 preguntas (10 + 50 nuevas) si actualizas questions_etiquetado.json.
 const novedades = [
   {
     fecha: "05/01/2026",
@@ -143,7 +142,12 @@ async function loadAllQuestions() {
       })
       .map((q) => ({ ...q, correct: String(q.correct).toUpperCase() }));
 
+    console.log(
+      `✅ Cargadas ${allQuestions.length} preguntas de ${QUESTION_FILES.length} archivos`
+    );
+
     updateCategoryFilter();
+    renderQuestionStats(); // 🆕 pinta totales (y también los de la categoría seleccionada)
 
     if (allQuestions.length === 0) {
       const testDiv = document.getElementById("test");
@@ -174,6 +178,62 @@ function updateCategoryFilter() {
     option.textContent = cat;
     categoryFilter.appendChild(option);
   });
+}
+
+// ==================================================
+// ===== ESTADÍSTICAS BANCO ==========================
+// ==================================================
+function getCountsByCategory() {
+  return allQuestions.reduce((acc, q) => {
+    acc[q.category] = (acc[q.category] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+function getSelectedCategory() {
+  return document.getElementById("category-filter")?.value || "all";
+}
+
+function getAvailableInSelectedCategory() {
+  const selected = getSelectedCategory();
+  if (selected === "all") return allQuestions.length;
+  return allQuestions.filter((q) => q.category === selected).length;
+}
+
+function renderQuestionStats() {
+  const statsTop = document.getElementById("stats-top");
+  const byCatEl = document.getElementById("questions-by-category");
+  if (!statsTop || !byCatEl) return;
+
+  const total = allQuestions.length;
+  const counts = getCountsByCategory();
+
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+  statsTop.innerHTML = `
+    <div>• Total de preguntas: <b>${total}</b></div>
+    <div>• Preguntas por test: <b>${MAX_QUESTIONS}</b></div>
+    <div id="available-selected" style="margin-top:6px;"></div>
+  `;
+
+  byCatEl.innerHTML = sorted
+    .map(([cat, n]) => `<div>• ${cat}: ${n}</div>`)
+    .join("");
+
+  updateStatsForSelectedCategory();
+}
+
+function updateStatsForSelectedCategory() {
+  const availableEl = document.getElementById("available-selected");
+  if (!availableEl) return;
+
+  const selected = getSelectedCategory();
+  const available = getAvailableInSelectedCategory();
+
+  const label =
+    selected === "all" ? "Disponibles (todas)" : `Disponibles en ${selected}`;
+
+  availableEl.innerHTML = `• ${label}: <b>${available}</b>`;
 }
 
 // ==================================================
@@ -217,7 +277,7 @@ function startTest() {
   resultDiv.textContent = "";
   userAnswers = [];
 
-  const category = document.getElementById("category-filter")?.value || "all";
+  const category = getSelectedCategory();
 
   let filtered = allQuestions.filter(
     (q) => category === "all" || q.category === category
@@ -269,7 +329,6 @@ function correctTest() {
 
   let correctCount = 0;
 
-  // Marcar respuestas
   currentTest.forEach((q, i) => {
     const selected = userAnswers[i];
     const radios = document.getElementsByName(`q${i}`);
@@ -278,7 +337,6 @@ function correctTest() {
       const label = r.parentElement;
       if (!label) return;
 
-      // Reset estilos
       label.style.fontWeight = "normal";
       label.style.color = "#000";
 
@@ -323,4 +381,11 @@ function correctTest() {
 document.addEventListener("DOMContentLoaded", () => {
   renderNovedades();
   loadAllQuestions();
+
+  const categoryFilter = document.getElementById("category-filter");
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", () => {
+      updateStatsForSelectedCategory();
+    });
+  }
 });
