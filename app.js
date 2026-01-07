@@ -108,95 +108,10 @@ function renderNovedades() {
 }
 
 // ==================================================
-// ===== MASCOTA =====================================
+// ===== UTIL: CATEGORÍA SELECCIONADA ================
 // ==================================================
-const mascotName = "Vito";
-
-const mascotByCategory = [
-  { match: "🐄 Bienestar Animal", emoji: "🐄" },
-  { match: "🍗 Higiene Alimentaria", emoji: "🍗" },
-  { match: "🏷️ Etiquetado", emoji: "🏷️" },
-  { match: "🦠 Sanidad Animal", emoji: "🦠" },
-];
-
-const mascotPhrases = {
-  general: [
-    "¡Hola! Hoy toca avanzar un poquito. Con constancia se gana.",
-    "Cada test es un paso más. Vamos a por ello.",
-    "Cinco minutos de test hoy valen oro mañana.",
-    "Si fallas, perfecto: acabas de encontrar qué estudiar.",
-    "Respira, contesta y sigue. Esto se construye con práctica.",
-  ],
-  "🐄 Bienestar Animal": [
-    "Bienestar animal: piensa en el animal antes que en el trámite.",
-    "Transporte y sacrificio: precisión y calma.",
-    "Hoy toca clavar normativa y sentido común.",
-  ],
-  "🍗 Higiene Alimentaria": [
-    "Higiene: temperaturas y tiempos son tus mejores amigos.",
-    "APPCC: identifica el riesgo y controla el punto crítico.",
-    "Un detalle de higiene hoy te evita un brote mañana.",
-  ],
-  "🏷️ Etiquetado": [
-    "Etiquetado: lo que no se dice bien, se vende mal.",
-    "Ojo con alérgenos y campo visual: suelen caer mucho.",
-    "Lote, fechas y denominación: tríada clave.",
-  ],
-  "🦠 Sanidad Animal": [
-    "Sanidad animal: piensa en prevención y en rutas de transmisión.",
-    "Zoonosis: protege al animal y también a las personas.",
-    "Hoy toca memoria + lógica epidemiológica.",
-  ],
-};
-
-function setMascotMessage(text) {
-  const msg = document.getElementById("mascot-message");
-  const card = document.getElementById("mascot-card");
-  if (!msg) return;
-
-  msg.textContent = text;
-
-  if (card) {
-    card.classList.remove("mascot-pop");
-    // reflow para reiniciar animación
-    void card.offsetWidth;
-    card.classList.add("mascot-pop");
-  }
-}
-
-function setMascotEmoji(emoji) {
-  const el = document.getElementById("mascot-emoji");
-  if (el) el.textContent = emoji;
-}
-
 function getSelectedCategory() {
   return document.getElementById("category-filter")?.value || "all";
-}
-
-function getMascotEmojiForCategory(category) {
-  if (category === "all") return "🩺";
-  const found = mascotByCategory.find((x) => x.match === category);
-  return found ? found.emoji : "🩺";
-}
-
-function pickRandom(arr) {
-  if (!arr || arr.length === 0) return "";
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-function updateMascotForCategory(category) {
-  const nameEl = document.getElementById("mascot-name");
-  if (nameEl) nameEl.textContent = mascotName;
-
-  const emoji = getMascotEmojiForCategory(category);
-  setMascotEmoji(emoji);
-
-  const pool =
-    category !== "all" && mascotPhrases[category]
-      ? mascotPhrases[category]
-      : mascotPhrases.general;
-
-  setMascotMessage(pickRandom(pool));
 }
 
 // ==================================================
@@ -261,7 +176,6 @@ function updateCategoryFilter() {
   categoryFilter.innerHTML = `<option value="all">📚 Todas las categorías</option>`;
 
   const categories = [...new Set(allQuestions.map((q) => q.category))].sort();
-
   categories.forEach((cat) => {
     const option = document.createElement("option");
     option.value = cat;
@@ -321,10 +235,7 @@ function updateStatsForSelectedCategory() {
   const startBtn = document.getElementById("startBtn");
   if (startBtn) {
     const willUse = Math.min(MAX_QUESTIONS, available);
-    startBtn.textContent =
-      selected === "all"
-        ? `▶ Iniciar test (${willUse} de ${available})`
-        : `▶ Iniciar test (${willUse} de ${available})`;
+    startBtn.textContent = `▶ Iniciar test (${willUse} de ${available})`;
   }
 }
 
@@ -342,7 +253,6 @@ function shuffleQuestionOptions(question) {
   }));
 
   shuffleArray(options);
-
   return { ...question, options };
 }
 
@@ -353,132 +263,4 @@ function setError(message) {
 
 // ==================================================
 // ===== TEST ========================================
-// ==================================================
-function startTest() {
-  const testDiv = document.getElementById("test");
-  const resultDiv = document.getElementById("result");
-  const correctBtn = document.getElementById("correctBtn");
-
-  if (!testDiv || !resultDiv) return;
-
-  if (!allQuestions || allQuestions.length === 0) {
-    setError("Aún no se han cargado preguntas. Espera un momento e intenta de nuevo.");
-    return;
-  }
-
-  resultDiv.textContent = "";
-  userAnswers = [];
-
-  const category = getSelectedCategory();
-
-  let filtered = allQuestions.filter(
-    (q) => category === "all" || q.category === category
-  );
-
-  if (filtered.length === 0) {
-    testDiv.innerHTML = "<p>No hay preguntas disponibles para esta categoría.</p>";
-    if (correctBtn) correctBtn.style.display = "none";
-    return;
-  }
-
-  filtered = shuffleArray(filtered).slice(0, Math.min(MAX_QUESTIONS, filtered.length));
-  currentTest = filtered.map((q) => shuffleQuestionOptions(q));
-
-  testDiv.innerHTML = currentTest
-    .map(
-      (q, i) => `
-      <div class="question-block">
-        <div style="font-size:12px; color:#666; margin-bottom:8px;">${q.category}</div>
-        <div style="font-weight:bold; margin-bottom:10px;">${i + 1}. ${q.question}</div>
-        ${q.options
-          .map(
-            (opt) => `
-            <label>
-              <input type="radio" name="q${i}" value="${opt.key}" onchange="saveAnswer(${i}, '${opt.key}')"/>
-              ${opt.key}) ${opt.text}
-            </label>
-          `
-          )
-          .join("")}
-      </div>
-    `
-    )
-    .join("");
-
-  if (correctBtn) correctBtn.style.display = "inline-block";
-}
-
-function saveAnswer(index, value) {
-  userAnswers[index] = value;
-}
-
-function correctTest() {
-  const resultDiv = document.getElementById("result");
-  const correctBtn = document.getElementById("correctBtn");
-
-  if (!resultDiv) return;
-
-  let correctCount = 0;
-
-  currentTest.forEach((q, i) => {
-    const selected = userAnswers[i];
-    const radios = document.getElementsByName(`q${i}`);
-
-    radios.forEach((r) => {
-      const label = r.parentElement;
-      if (!label) return;
-
-      label.classList.remove("correct", "incorrect");
-
-      if (r.value === q.correct) {
-        label.classList.add("correct");
-      }
-
-      if (selected && r.value === selected && selected !== q.correct) {
-        label.classList.add("incorrect");
-      }
-    });
-
-    if (selected === q.correct) correctCount++;
-  });
-
-  const totalQuestions = currentTest.length;
-  const score = (correctCount / totalQuestions) * 10;
-
-  let phraseList = motivationalPhrases.low;
-  if (score >= 9) phraseList = motivationalPhrases.excellent;
-  else if (score >= 7) phraseList = motivationalPhrases.good;
-  else if (score >= 5) phraseList = motivationalPhrases.medium;
-
-  const phrase = phraseList[Math.floor(Math.random() * phraseList.length)];
-
-  resultDiv.innerHTML = `
-    <div style="padding:15px; background:#f8f9fa; border-radius:8px; border:1px solid #eee;">
-      <div>✅ Nota: ${score.toFixed(2)} / 10</div>
-      <div>📌 Aciertos: ${correctCount}/${totalQuestions}</div>
-      <div style="margin-top:10px;">${phrase}</div>
-    </div>
-  `;
-
-  if (correctBtn) correctBtn.style.display = "none";
-}
-
-// ==================================================
-// ===== INIT ========================================
-// ==================================================
-document.addEventListener("DOMContentLoaded", () => {
-  renderNovedades();
-  loadAllQuestions();
-
-  const categoryFilter = document.getElementById("category-filter");
-  if (categoryFilter) {
-    categoryFilter.addEventListener("change", () => {
-      updateStatsForSelectedCategory();
-      updateMascotForCategory(getSelectedCategory());
-    });
-  }
-
-  // Frase aleatoria al cargar (refresco)
-  updateMascotForCategory(getSelectedCategory());
-});
-
+// =============================================
