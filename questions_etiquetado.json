@@ -6,7 +6,9 @@
     "c": "Solo el precio.",
     "d": "Nombre científico y distribuidor.",
     "correct": "B",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "El Reglamento (CE) 854/2004 establece que en la etiqueta de carne fresca deben figurar obligatoriamente el nombre común del animal, el país de origen y la identificación del lote para trazabilidad.",
+    "source": "Reglamento (CE) nº 854/2004, Anexo II"
   },
   {
     "question": "¿Cuál es el tamaño mínimo de letra para la información nutricional en etiquetas de productos cárnicos?",
@@ -15,7 +17,9 @@
     "c": "12 puntos.",
     "d": "No hay límite mínimo.",
     "correct": "A",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "El Reglamento (UE) 1169/2011 especifica que la información nutricional debe tener un tamaño de letra mínimo de 8 puntos para asegurar la legibilidad.",
+    "source": "Reglamento (UE) nº 1169/2011, Artículo 13"
   },
   {
     "question": "Según el Reglamento (UE) 1169/2011, ¿qué es un alérgeno declarable en productos cárnicos?",
@@ -24,7 +28,9 @@
     "c": "Cualquier sustancia que cause reacciones adversas en personas sensibles.",
     "d": "Solo aditivos químicos.",
     "correct": "C",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "Un alérgeno declarable es cualquier sustancia que cause reacciones adversas en personas sensibles, incluyendo los 14 alérgenos definidos en el Anexo II del Reglamento 1169/2011.",
+    "source": "Reglamento (UE) nº 1169/2011, Anexo II"
   },
   {
     "question": "¿Qué significa la marcación 'EC' en la etiqueta de un producto cárnico?",
@@ -33,7 +39,9 @@
     "c": "Empresa controlada.",
     "d": "Estado Comunicante.",
     "correct": "B",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "La marcación 'EC' identifica a un establecimiento comunitario autorizado que cumple con la normativa de higiene y seguridad alimentaria de la UE.",
+    "source": "Reglamento (CE) nº 853/2004, Artículo 5"
   },
   {
     "question": "¿Cuál es el símbolo de identificación de alérgeno en productos cárnicos que contienen soja?",
@@ -42,7 +50,9 @@
     "c": "Letra 'S' en color negro.",
     "d": "No existe un símbolo único obligatorio.",
     "correct": "D",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "El Reglamento 1169/2011 no impone un símbolo único obligatorio para alérgenos. Solo requiere que sean declarados en la lista de ingredientes con una composición tipográfica destacada.",
+    "source": "Reglamento (UE) nº 1169/2011, Artículo 21"
   },
   {
     "question": "Según la normativa, ¿qué dato NO es obligatorio en la etiqueta de jamón curado?",
@@ -51,7 +61,9 @@
     "c": "Identidad del importador.",
     "d": "Peso neto aproximado.",
     "correct": "C",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "La identidad del importador no es un dato obligatorio en jamón curado. Son obligatorios nombre, origen, peso e identificación del lote, pero no necesariamente el importador.",
+    "source": "Reglamento (CE) nº 853/2004 y Reglamento (UE) nº 1169/2011"
   },
   {
     "question": "¿Cuál es el código para identificar 'Conservante: E-200 (ácido sórbico)' en una etiqueta de embutido?",
@@ -60,7 +72,9 @@
     "c": "E-300.",
     "d": "E-400.",
     "correct": "B",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "El código E-200 corresponde al ácido sórbico, un conservante autorizado en la UE para embutidos. Los códigos E están regulados en el Reglamento 1333/2008.",
+    "source": "Reglamento (CE) nº 1333/2008, Anexo III"
   },
   {
     "question": "¿Qué información sobre sostenibilidad es obligatoria en etiquetas de productos cárnicos según la UE?",
@@ -69,7 +83,9 @@
     "c": "Solo emisiones de CO2.",
     "d": "No es obligatoria.",
     "correct": "D",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "La información sobre sostenibilidad no es obligatoria en etiquetas de productos cárnicos. Es una declaración voluntaria que puede realizarse según regulaciones específicas si se cumple.",
+    "source": "Reglamento (UE) nº 1169/2011"
   },
   {
     "question": "¿Cuál es el formato obligatorio para la fecha de consumo preferente en productos cárnicos refrigerados?",
@@ -78,7 +94,9 @@
     "c": "Solo la semana.",
     "d": "Puede ser cualquier formato.",
     "correct": "A",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "En productos refrigerados, la fecha de consumo preferente debe expresarse como DD/MM/AAAA para claridad y precisión en el seguimiento del producto.",
+    "source": "Reglamento (UE) nº 1169/2011, Artículo 13"
   },
   {
     "question": "Según la normativa, ¿qué información debe aparecer en los embutidos denominados 'jamón'?",
@@ -87,6 +105,8 @@
     "c": "Solo el precio.",
     "d": "No hay requisitos específicos.",
     "correct": "B",
-    "category": "🏷️ Etiquetado"
+    "category": "🏷️ Etiquetado",
+    "explanation": "El Reglamento 853/2004 especifica que los jamones denominados así deben incluir el tipo (jamón serrano, jamón York, etc.), el período de curación y, si posee, la denominación de origen protegida.",
+    "source": "Reglamento (CE) nº 853/2004, Anexo II"
   }
 ]
