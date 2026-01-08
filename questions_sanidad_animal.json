@@ -6,7 +6,9 @@
     "c": "Brucella suis.",
     "d": "Brucella canis.",
     "correct": "A",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "Brucella abortus es el agente causal más frecuente de brucelosis en el ganado bovino, causando abortos y reducción de la fertilidad.",
+    "source": "OIE Manual of Diagnostic Tests and Vaccines for Terrestrial Animals"
   },
   {
     "question": "¿Cuál es la enfermedad vehiculada por el virus del Nilo Occidental que afecta principalmente a équidos?",
@@ -15,7 +17,9 @@
     "c": "Rabia.",
     "d": "Pseudorabia.",
     "correct": "A",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "El virus del Nilo Occidental causa fiebre del Nilo Occidental en équidos, transmitida por mosquitos del género Culex.",
+    "source": "CDC - West Nile Virus en animales"
   },
   {
     "question": "¿Qué enfermedad se caracteriza por vesículas en el hocico, pezuñas y ubres de rumiantes?",
@@ -24,7 +28,9 @@
     "c": "Enfermedad vesicular del cerdo.",
     "d": "Rabia.",
     "correct": "B",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "La fiebre aftosa, causada por un picornavirus, se caracteriza por la aparición de vesículas en la boca, pezuñas y ubres de rumiantes y cerdos.",
+    "source": "OIE - Foot and Mouth Disease Manual"
   },
   {
     "question": "¿Cuál es el período de incubación medio de la tuberculosis bovina?",
@@ -33,7 +39,9 @@
     "c": "3-6 meses.",
     "d": "1-2 años.",
     "correct": "C",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "El período de incubación de la tuberculosis bovina causada por Mycobacterium bovis es de 3 a 6 meses, siendo una enfermedad crónica lenta.",
+    "source": "OIE - Bovine Tuberculosis Technical Disease Card"
   },
   {
     "question": "¿Qué bacteria es responsable de la enfermedad de Aujeszky en cerdos?",
@@ -42,7 +50,9 @@
     "c": "Virus de la Peste Porcina Clásica.",
     "d": "Parvovirus porcino.",
     "correct": "A",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "El Herpesvirus suino 1 (SuHV-1) es el agente causal de la enfermedad de Aujeszky o pseudorrabia, una enfermedad viral que afecta principalmente a cerdos.",
+    "source": "OIE - Aujeszky's Disease Technical Disease Card"
   },
   {
     "question": "¿Cuál es el principal vector de la Piroplasmosis en el ganado vacuno?",
@@ -51,7 +61,9 @@
     "c": "Mosquito Anopheles.",
     "d": "Tabanidae.",
     "correct": "B",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "Las garrapatas del género Boophilus son los principales vectores de Piroplasmosis en ganado bovino, transmitiendo protozoarios como Babesia.",
+    "source": "OIE - Bovine Piroplasmosis Technical Disease Card"
   },
   {
     "question": "¿Qué enfermedad zoonótica causa la leptospira en ganado?",
@@ -60,7 +72,9 @@
     "c": "Tuberculosis.",
     "d": "Brucelosis.",
     "correct": "A",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "La leptospirosis es la enfermedad causada por bacterias del género Leptospira en ganado, siendo zoonótica y transmisible a humanos.",
+    "source": "OIE - Leptospirosis Technical Disease Card"
   },
   {
     "question": "¿Cuál es el síntoma característico de la enfermedad de Marek en aves?",
@@ -69,7 +83,9 @@
     "c": "Inflamación de las articulaciones.",
     "d": "Pérdida total de plumas.",
     "correct": "A",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "La enfermedad de Marek, causada por un herpesvirus aviar, se caracteriza por parálisis progresiva y lesiones nerviosas en aves infectadas.",
+    "source": "OIE - Marek's Disease Technical Disease Card"
   },
   {
     "question": "¿Qué microorganismo causa la mastitis bovina más frecuentemente?",
@@ -78,7 +94,9 @@
     "c": "Streptococcus agalactiae.",
     "d": "Corynebacterium bovis.",
     "correct": "B",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "Staphylococcus aureus es la causa más frecuente de mastitis bovina, siendo una bacteria contagiosa que se transmite entre animales.",
+    "source": "NMC (National Mastitis Council) Handbook"
   },
   {
     "question": "¿Cuál es la vía de transmisión principal de la Enfermedad de Borna en caballos?",
@@ -87,6 +105,8 @@
     "c": "Aún se desconoce con precisión.",
     "d": "Inoculación accidental.",
     "correct": "C",
-    "category": "🦠 Sanidad Animal"
+    "category": "🦠 Sanidad Animal",
+    "explanation": "Aunque se han propuesto varias vías de transmisión, la ruta de transmisión principal de la enfermedad de Borna aún no se conoce con total precisión.",
+    "source": "OIE - Borna Disease Technical Disease Card"
   }
 ]
