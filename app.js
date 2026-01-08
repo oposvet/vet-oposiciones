@@ -3,6 +3,14 @@
 // ==================================================
 const MAX_QUESTIONS = 10;
 
+// Lista de archivos JSON a cargar
+const QUESTION_FILES = [
+  "questions_bienestar_animal.json",
+  "questions_higiene_alimentaria.json",
+  "questions_etiquetado.json",
+  "questions_sanidad_animal.json",
+];
+
 // ==================================================
 // ===== FRASES MOTIVADORAS =========================
 // ==================================================
@@ -42,9 +50,33 @@ let userAnswers = [];
 const novedades = [
   {
     fecha: "04/01/2026",
-    titulo: "Nuevas preguntas de bienestar animal",
+    titulo: "🆕 Estructura modular con 4 categorías",
     descripcion:
-      "Actualización conforme a normativa básica estatal y reglamentos europeos vigentes.",
+      "La app ahora carga preguntas desde 4 archivos JSON separados. Más mantenible, escalable y fácil de actualizar.",
+  },
+  {
+    fecha: "04/01/2026",
+    titulo: "🐄 Bienestar Animal (questions_bienestar_animal.json)",
+    descripcion:
+      "10 preguntas sobre transporte de animales, sacrificio humanitario y videovigilancia en mataderos.",
+  },
+  {
+    fecha: "04/01/2026",
+    titulo: "🍗 Higiene Alimentaria (questions_higiene_alimentaria.json)",
+    descripcion:
+      "10 preguntas sobre temperaturas, APPCC, patógenos y límites microbiológicos.",
+  },
+  {
+    fecha: "04/01/2026",
+    titulo: "🏷️ Etiquetado (questions_etiquetado.json)",
+    descripcion:
+      "10 preguntas sobre Reglamento (UE) 1169/2011, alérgenos, códigos E y marcado de establecimiento.",
+  },
+  {
+    fecha: "04/01/2026",
+    titulo: "🦠 Sanidad Animal (questions_sanidad_animal.json)",
+    descripcion:
+      "10 preguntas sobre enfermedades virales, bacterianas, zoonosis y vectores en ganado.",
   },
 ];
 
@@ -66,20 +98,30 @@ function renderNovedades() {
 }
 
 // ==================================================
-// ===== CARGA DE PREGUNTAS (questions.json) =======
+// ===== CARGA DE PREGUNTAS (Múltiples JSONs) =====
 // ==================================================
-async function loadQuestions() {
+async function loadAllQuestions() {
   try {
-    const response = await fetch("questions.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("No se pudo cargar questions.json");
+    // Cargar todos los archivos en paralelo
+    const promises = QUESTION_FILES.map((file) =>
+      fetch(file, { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) throw new Error(`No se pudo cargar ${file}`);
+          return res.json();
+        })
+        .catch((err) => {
+          console.error(`Error cargando ${file}:`, err);
+          return [];
+        })
+    );
 
-    const data = await response.json();
-    if (!Array.isArray(data)) {
-      throw new Error("questions.json debe ser un ARRAY [ ... ]");
-    }
+    const results = await Promise.all(promises);
 
-    // Filtro mínimo por estructura (evita preguntas rotas)
-    allQuestions = data
+    // Combinar todos los resultados
+    const allData = results.flat();
+
+    // Validar y filtrar
+    allQuestions = allData
       .filter((q) => {
         return (
           q &&
@@ -97,16 +139,22 @@ async function loadQuestions() {
         correct: String(q.correct).toUpperCase(),
       }));
 
+    console.log(
+      `✅ Cargadas ${allQuestions.length} preguntas de ${QUESTION_FILES.length} archivos`
+    );
+
     updateCategoryFilter();
 
-    const testDiv = document.getElementById("test");
-    if (testDiv && allQuestions.length === 0) {
-      testDiv.innerHTML =
-        "<p style='color: red;'>No hay preguntas válidas en questions.json.</p>";
+    if (allQuestions.length === 0) {
+      const testDiv = document.getElementById("test");
+      if (testDiv) {
+        testDiv.innerHTML =
+          "<p style='color: red;'>No se han podido cargar preguntas. Verifica que los archivos JSON existan.</p>";
+      }
     }
   } catch (error) {
-    console.error(error);
-    setError("Error al cargar el banco de preguntas. Revisa questions.json.");
+    console.error("Error general al cargar preguntas:", error);
+    setError("Error al cargar el banco de preguntas. Verifica los archivos JSON.");
   }
 }
 
@@ -161,7 +209,7 @@ function startTest() {
   if (!testDiv || !resultDiv) return;
 
   if (!allQuestions || allQuestions.length === 0) {
-    setError("Aún no se han cargado preguntas (o el JSON está vacío).");
+    setError("Aún no se han cargado preguntas. Espera un momento e intenta de nuevo.");
     return;
   }
 
@@ -324,5 +372,5 @@ function correctTest() {
 // ==================================================
 document.addEventListener("DOMContentLoaded", () => {
   renderNovedades();
-  loadQuestions();
+  loadAllQuestions(); // Cambio: ahora se llama loadAllQuestions()
 });
