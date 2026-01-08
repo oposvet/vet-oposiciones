@@ -108,5 +108,115 @@
     "category": "🦠 Sanidad Animal",
     "explanation": "Aunque se han propuesto varias vías de transmisión, la ruta de transmisión principal de la enfermedad de Borna aún no se conoce con total precisión.",
     "source": "OIE - Borna Disease Technical Disease Card"
-  }
+  },
+  {
+  "question": "De acuerdo con el artículo 1 de la Ley 8/2003, NO constituye objeto directo ni fin explícito de la ley:",
+  "a": "La regulación de la sanidad exterior en lo relativo a la sanidad animal",
+  "b": "La prevención de riesgos para la salud humana derivados del consumo de productos de origen animal con residuos nocivos",
+  "c": "El establecimiento de normas básicas y de coordinación en materia de sanidad animal",
+  "d": "La ordenación de la política comercial interior de productos ganaderos con fines económicos",
+  "correct": "D",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 1 limita el objeto y los fines de la ley a la sanidad animal, la sanidad exterior vinculada a ella y la protección de la salud humana y animal, sin incluir la ordenación de la política comercial interior con fines económicos.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 1"
+},
+{
+  "question": "Según el artículo 2 de la Ley 8/2003, NO queda comprendido en el ámbito de aplicación de la ley:",
+  "a": "Los productos zoosanitarios en relación con su almacenamiento y presencia residual en productos de origen animal",
+  "b": "Las actividades de personas físicas o jurídicas relacionadas con las finalidades de la ley",
+  "c": "Los ecosistemas naturales y terrenos utilizados para el ganado",
+  "d": "Las actividades exclusivamente recreativas sin relación alguna con la sanidad animal",
+  "correct": "D",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 2.d circunscribe el ámbito de aplicación a actividades relacionadas con las finalidades de la ley, quedando excluidas aquellas sin ninguna relación con la sanidad animal.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 2"
+},
+{
+  "question": "Conforme al artículo 3 de la Ley 8/2003, NO se considerará animal de producción:",
+  "a": "Un animal silvestre criado para la producción de alimentos con fines lucrativos",
+  "b": "Un animal de peletería destinado a aprovechamiento comercial",
+  "c": "Un perro inscrito como animal de compañía, con independencia de su destino",
+  "d": "Un animal criado para sacrificio destinado a consumo humano",
+  "correct": "C",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 3.2 excluye expresamente a perros, gatos y hurones de la definición de animales de producción, considerándolos animales de compañía en todo caso.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 3"
+},
+{
+  "question": "De acuerdo con el principio de proporcionalidad recogido en el artículo 4 de la Ley 8/2003, las medidas sanitarias NO deberán:",
+  "a": "Ser proporcionales al resultado que se pretenda obtener",
+  "b": "Tener en cuenta la evaluación del riesgo sanitario",
+  "c": "Basarse en conocimientos técnicos y científicos disponibles",
+  "d": "Priorizar la restricción del comercio de animales aunque no sea necesario",
+  "correct": "D",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 4 establece que las medidas deberán reducir al mínimo los efectos negativos sobre el comercio, no priorizar su restricción injustificada.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 4"
+},
+{
+  "question": "Según el artículo 5 de la Ley 8/2003, NO será correcta la siguiente afirmación en relación con la obligación de comunicación:",
+  "a": "La comunicación de focos epizoóticos debe realizarse de forma inmediata",
+  "b": "El plazo máximo será de 24 horas cuando no exista plazo específico",
+  "c": "Solo están obligados a comunicar los veterinarios oficiales",
+  "d": "Debe comunicarse también la sospecha de enfermedades de declaración obligatoria",
+  "correct": "C",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 5 impone la obligación de comunicación a toda persona física o jurídica, pública o privada, no exclusivamente a veterinarios oficiales.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 5"
+},
+{
+  "question": "Conforme al artículo 6 de la Ley 8/2003, la coordinación de la sanidad animal NO incluye:",
+  "a": "El establecimiento de criterios mínimos comunes para evaluar programas sanitarios",
+  "b": "La determinación de objetivos mínimos comunes en prevención y asistencia sanitaria veterinaria",
+  "c": "La fijación de sanciones homogéneas en todo el territorio nacional",
+  "d": "El uso de mapas epizootiológicos para evaluar necesidades sanitarias",
+  "correct": "C",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 6 limita la coordinación a programas, objetivos y criterios de evaluación, sin incluir la fijación de sanciones.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 6"
+},
+{
+  "question": "Según el artículo 7 de la Ley 8/2003, NO constituye una obligación de los particulares:",
+  "a": "Vigilar el estado sanitario de los animales bajo su responsabilidad",
+  "b": "Comunicar datos sanitarios exigidos por la normativa aplicable",
+  "c": "Solicitar certificados sanitarios exigibles para importación y exportación",
+  "d": "Percibir indemnizaciones por las medidas sanitarias aplicadas",
+  "correct": "D",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 7 enumera obligaciones de vigilancia, comunicación, identificación y asunción de costes, pero no reconoce el derecho a percibir indemnizaciones.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 7"
+},
+{
+  "question": "De acuerdo con el artículo 8 de la Ley 8/2003, las medidas sanitarias de salvaguardia NO podrán adoptarse:",
+  "a": "Ante riesgos graves para la sanidad animal",
+  "b": "Para proteger la salud pública",
+  "c": "Con carácter preventivo ante riesgos fundados",
+  "d": "Sin relación alguna con riesgos sanitarios",
+  "correct": "D",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 8 vincula las medidas de salvaguardia a la existencia de riesgos graves o fundados para la sanidad animal o la salud pública.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 8"
+},
+{
+  "question": "Según el artículo 9 de la Ley 8/2003, los planes de gestión de emergencias sanitarias NO tendrán por finalidad:",
+  "a": "Establecer actuaciones coordinadas ante situaciones de riesgo sanitario",
+  "b": "Garantizar una respuesta rápida y eficaz",
+  "c": "Regular de forma ordinaria la sanidad animal",
+  "d": "Definir los recursos necesarios para afrontar emergencias",
+  "correct": "C",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 9 se refiere exclusivamente a situaciones de emergencia sanitaria, no a la regulación ordinaria de la sanidad animal.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 9"
+},
+{
+  "question": "Conforme al artículo 10 de la Ley 8/2003, NO estará permitida la introducción de material infeccioso:",
+  "a": "Cuando cuente con la debida autorización administrativa",
+  "b": "Si se realiza para fines científicos o diagnósticos autorizados",
+  "c": "Cuando se efectúe sin autorización de la autoridad competente",
+  "d": "Cuando se ajuste a las condiciones establecidas reglamentariamente",
+  "correct": "C",
+  "category": "🦠 Sanidad Animal",
+  "explanation": "El artículo 10 prohíbe la introducción de material infeccioso salvo en los supuestos expresamente autorizados por la autoridad competente.",
+  "source": "Ley 8/2003, de sanidad animal, artículo 10"
+}
 ]
