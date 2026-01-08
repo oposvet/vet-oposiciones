@@ -1,224 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="App gratuita para practicar oposiciones de veterinaria. Test por categorías, corrección automática y preguntas basadas en normativa vigente."
-    />
-    <meta
-      name="keywords"
-      content="oposiciones veterinaria, test veterinaria, bienestar animal, sanidad animal, CLM"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VetOposiciones · Test Veterinaria</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VetOposiciones</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    button { padding: 10px 12px; cursor: pointer; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 16px; max-width: 820px; }
+    .muted { color: #666; }
+    .error { color: #b00020; }
+    fieldset { border: 0; padding: 0; margin: 0; }
+    label { display: block; padding: 8px 0; }
+    .actions { display: flex; gap: 8px; margin-top: 12px; }
+  </style>
+</head>
 
-  <body>
-    <!-- ================= HEADER ================= -->
-    <header
-      style="
-        background: white;
-        padding: 15px 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      "
-    >
-      <h1 style="margin: 0; font-size: 20px">🩺 VetOposiciones</h1>
-      <p style="margin: 5px 0 0 0; font-size: 12px; color: #666">
-        Preparación de oposiciones de veterinaria
-      </p>
-    </header>
+<body>
+  <h1>VetOposiciones</h1>
 
-    <main>
-      <!-- ================= LANDING ================= -->
-      <section
-        id="landing"
-        style="
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          padding: 60px 20px;
-          text-align: center;
-          margin: 30px 20px;
-          border-radius: 10px;
-        "
-      >
-        <h1 style="font-size: 32px; margin-bottom: 10px">
-          🩺 Test Veterinaria Oposiciones
-        </h1>
-        <p style="font-size: 18px; margin-bottom: 20px; opacity: 0.9">
-          Escala Superior · Sanitarios Locales · Comunidades Autónomas
-        </p>
+  <div class="row" id="categoryButtons">
+    <button data-file="questions_bienestar_animal.json">🐄 Bienestar animal</button>
+    <button data-file="questions_sanidad_animal.json">🦠 Sanidad animal</button>
+    <button data-file="questions_higiene_alimentaria.json">🍗 Higiene alimentaria</button>
+    <button data-file="questions_etiquetado.json">🏷️ Etiquetado</button>
+  </div>
 
-        <div
-          style="
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 500px;
-          "
-        >
-          <h3>¿Qué ofrece esta plataforma?</h3>
-          <ul style="text-align: left">
-            <li>✅ Test por categorías</li>
-            <li>✅ Corrección automática con nota sobre 10</li>
-            <li>✅ Preguntas basadas en normativa vigente</li>
-            <li>✅ Acceso libre, sin registro</li>
-          </ul>
-        </div>
+  <div class="card">
+    <div id="status" class="muted">Elige una categoría para empezar.</div>
+    <div id="error" class="error" style="display:none;"></div>
 
-        <button
-          onclick="document.querySelector('#test-section').scrollIntoView({behavior:'smooth'})"
-          style="
-            background: white;
-            color: #667eea;
-            padding: 15px 40px;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-          "
-        >
-          👉 Empezar a practicar
-        </button>
+    <h2 id="qTitle" style="display:none;"></h2>
 
-        <p style="font-size: 12px; margin-top: 20px; opacity: 0.8">
-          Sin publicidad · Sin registros · Estudio directo
-        </p>
-      </section>
+    <form id="quizForm" style="display:none;">
+      <fieldset id="options"></fieldset>
 
-      <!-- ================= NOVEDADES ================= -->
-      <section
-        style="
-          background: #f1f5ff;
-          padding: 40px 20px;
-          margin: 20px;
-          border-radius: 10px;
-        "
-      >
-        <h2 style="text-align: center; margin-bottom: 30px">🆕 Novedades</h2>
+      <div class="actions">
+        <button type="submit" id="answerBtn">Responder</button>
+        <button type="button" id="nextBtn" disabled>Siguiente</button>
+        <button type="button" id="restartBtn" style="margin-left:auto;">Reiniciar</button>
+      </div>
 
-        <div
-          id="news-container"
-          style="
-            max-width: 900px;
-            margin: auto;
-            display: grid;
-            gap: 20px;
-          "
-        ></div>
-      </section>
+      <div id="feedback" class="muted" style="margin-top:10px;"></div>
+    </form>
+  </div>
 
-      <!-- ================= TEST ================= -->
-      <section id="test-section" style="margin: 40px 20px">
-        <h2>📝 Test</h2>
-
-        <!-- FILTRO POR CATEGORÍA -->
-        <div
-          style="
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-          "
-        >
-          <label
-            for="category-filter"
-            style="display: block; margin-bottom: 10px; font-weight: bold"
-          >
-            📚 Selecciona categoría
-          </label>
-
-          <select
-            id="category-filter"
-            style="
-              width: 100%;
-              padding: 10px;
-              border: 2px solid #667eea;
-              border-radius: 5px;
-              font-size: 14px;
-            "
-          >
-            <option value="all">📚 Todas las categorías</option>
-          </select>
-        </div>
-
-        <!-- RESUMEN DE PREGUNTAS -->
-        <div
-          id="question-stats"
-          style="
-            background: #f1f5ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 0 0 20px 0;
-            border: 1px solid #dbe4ff;
-          "
-        >
-          <div style="font-weight: bold; margin-bottom: 8px">
-            📊 Banco de preguntas
-          </div>
-
-          <div id="stats-top" style="color: #333; line-height: 1.5"></div>
-
-          <div
-            id="questions-by-category"
-            style="margin-top: 10px; color: #555"
-          ></div>
-        </div>
-
-        <!-- INICIAR TEST -->
-        <button
-          id="startBtn"
-          onclick="startTest()"
-          style="
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 20px;
-          "
-        >
-          ▶ Iniciar test
-        </button>
-
-        <!-- CONTENEDOR DEL TEST -->
-        <div id="test" style="margin-bottom: 20px"></div>
-
-        <!-- CORREGIR -->
-        <button
-          id="correctBtn"
-          onclick="correctTest()"
-          style="
-            background: #28a745;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: none;
-          "
-        >
-          ✔ Corregir test
-        </button>
-
-        <!-- RESULTADO -->
-        <div id="result" style="font-weight: bold"></div>
-      </section>
-    </main>
-
-    <!-- ================= FOOTER ================= -->
-    <footer
-      style="
-        backgr
+  <script src="./app.js" defer></script>
+</body>
+</html>
